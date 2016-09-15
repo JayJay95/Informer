@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_timer"
+            android:icon="@drawable/ic_menu_timer"
+            android:title="Countdown" />
+        <item
+            android:id="@+id/nav_educate"
+            android:icon="@drawable/ic_menu_educate"
+            android:title="Voter Education" />
+        <item
+            android:id="@+id/nav_station"
+            android:icon="@drawable/ic_polling_station"
+            android:title="Polling Stations" />
+        <item
+            android:id="@+id/nav_candidate"
+            android:icon="@drawable/ic_menu_candidate"
+            android:title="Candidates" />
+        <item
+            android:id="@+id/nav_report"
+            android:icon="@drawable/ic_report_violation"
+            android:title="Report Violations" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

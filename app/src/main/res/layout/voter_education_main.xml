@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context="com.example.jayjay.informer.VoterEducation">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/vrcard_view"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/vrthumbnail"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_alignParentTop="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/bvr_card" />
+
+                    <TextView
+                        android:id="@+id/vrtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/vrthumbnail"
+                        android:maxLines="3"
+                        android:padding="8dp"
+                        android:text="Voter Registration Process"
+                        android:textColor="#222"
+                        android:textSize="22dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/voterregdescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/vrtitle"
+                        android:maxLines="3"
+                        android:padding="8dp"
+                        android:text="How to register as a Kenyan voter"
+                        android:textColor="#666"
+                        android:textSize="14dp" />
+                    <Button
+                        android:id="@+id/voterregbutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:minWidth="65dp"
+                        android:layout_below="@+id/voterregdescription"
+                        android:background="@null"
+                        android:textColor="#00B0FF"
+                        android:text="Learn" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/votingprocesscard_view"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/votingprocessthumbnail"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_alignParentTop="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/votingprocess_card" />
+
+                    <TextView
+                        android:id="@+id/votingprocesstitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/votingprocessthumbnail"
+                        android:maxLines="3"
+                        android:padding="8dp"
+                        android:text="Voting Process"
+                        android:textColor="#222"
+                        android:textSize="22dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/votingprocessdescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/votingprocesstitle"
+                        android:maxLines="3"
+                        android:padding="8dp"
+                        android:text="How to vote during the elections"
+                        android:textColor="#666"
+                        android:textSize="14dp" />
+
+                    <Button
+                        android:id="@+id/votingprocessbutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:minWidth="65dp"
+                        android:layout_below="@+id/votingprocessdescription"
+                        android:background="@null"
+                        android:textColor="#00B0FF"
+                        android:text="Learn" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/ballotmarkingcard_view"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ballotmarkingthumbnail"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_alignParentTop="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ballotmarking_card" />
+
+                    <TextView
+                        android:id="@+id/ballotmarkingtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ballotmarkingthumbnail"
+                        android:maxLines="3"
+                        android:padding="8dp"
+                        android:text="Ballot Marking"
+                        android:textColor="#222"
+                        android:textSize="22dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/ballotmarkingdescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ballotmarkingtitle"
+                        android:maxLines="3"
+                        android:padding="8dp"
+                        android:text="How to mark a ballot paper"
+                        android:textColor="#666"
+                        android:textSize="14dp" />
+
+                    <Button
+                        android:id="@+id/ballotmarkingbutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:minWidth="65dp"
+                        android:layout_below="@+id/ballotmarkingdescription"
+                        android:background="@null"
+                        android:textColor="#00B0FF"
+                        android:text="Learn" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

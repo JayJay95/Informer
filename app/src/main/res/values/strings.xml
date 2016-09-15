@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Informer</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="countdown">There are only</string>
+    <string name="countdownleft">till Elections Day!</string>
+</resources>
