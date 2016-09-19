@@ -75,7 +75,8 @@
                     android:text="Days"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#303F9F"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:contextClickable="true" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/LinearLayout11"

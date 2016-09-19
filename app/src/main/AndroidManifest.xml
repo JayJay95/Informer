@@ -2,16 +2,30 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jayjay.informer">
 
+    <permission
+        android:name="com.example.jayjay.informer.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <uses-permission android:name="com.example.jayjay.informer.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,12 +34,24 @@
         </activity>
         <activity
             android:name=".VoterEducation"
-            android:label="Voter Education"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="Voter Education Channel"
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".CountDown"
             android:label="Elections Countdown"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".PollingStations"
+            android:label="Find Your Polling Station"
+            android:theme="@style/AppTheme"></activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAQ6c1Dzfxweb56-bVAPd9tpHCToHgK5no" />
     </application>
 
 </manifest>
