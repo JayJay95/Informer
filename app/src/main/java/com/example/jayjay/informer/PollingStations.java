@@ -34,7 +34,7 @@ public class PollingStations extends FragmentActivity implements
         GoogleApiClient.OnConnectionFailedListener,
         GoogleMap.OnMarkerDragListener,
         GoogleMap.OnMapClickListener,
-        GoogleMap.onMarkerClickListener,
+        //GoogleMap.onMarkerClickListener,
         GoogleMap.OnInfoWindowClickListener,
         GoogleMap.OnMapLongClickListener,
         View.OnClickListener {
@@ -70,7 +70,7 @@ public class PollingStations extends FragmentActivity implements
     }
 
     private void initListeners() {
-        mMap.setOnMarkerClickListener(this);
+        //mMap.setOnMarkerClickListener(this);
         mMap.setOnInfoWindowClickListener(this);
         mMap.setOnMapClickListener(this);
     }
@@ -146,11 +146,11 @@ public class PollingStations extends FragmentActivity implements
         return address;
     }
 
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        marker.showInfoWindow();
-        return true;
-    }
+//    @Override
+//    public boolean onMarkerClick(Marker marker) {
+//        marker.showInfoWindow();
+//        return true;
+//    }
 
     @Override
     public void onMapClick(LatLng latLng) {

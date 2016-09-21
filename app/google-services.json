@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "611820235738",
+    "firebase_url": "https://informer-educating-voters.firebaseio.com",
+    "project_id": "informer-educating-voters",
+    "storage_bucket": "informer-educating-voters.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611820235738:android:6704e8e60565a2a2",
+        "android_client_info": {
+          "package_name": "com.example.jayjay.informer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611820235738-k3ck3c45dov6dero247poouvu1rvljcd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jayjay.informer",
+            "certificate_hash": "921236664AE4A175C1CF2025F59647107DAE75B6"
+          }
+        },
+        {
+          "client_id": "611820235738-vsbganvi0rpmugg865mnha8317al2uhg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAm9AIt0cpjzb7QGx1-nbA5-XnqhXTWvwc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611820235738-vsbganvi0rpmugg865mnha8317al2uhg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

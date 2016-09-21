@@ -58,17 +58,20 @@
                 android:orientation="vertical">
                 <TextView
                     android:id="@+id/txtTimerDay"
-                    android:layout_width="fill_parent"
+                    android:layout_width="106dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
                     android:gravity="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="#b71c1c"
                     android:textSize="35dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="20dp" />
                 <TextView
                     android:id="@+id/txt_TimerDay"
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
@@ -76,7 +79,11 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#303F9F"
                     android:textStyle="bold"
-                    android:contextClickable="true" />
+                    android:contextClickable="true"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="20dp" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/LinearLayout11"
@@ -87,24 +94,31 @@
                 android:orientation="vertical" >
                 <TextView
                     android:id="@+id/txtTimerHour"
-                    android:layout_width="fill_parent"
+                    android:layout_width="91dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
                     android:gravity="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="#b71c1c"
                     android:textSize="35dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="20dp" />
                 <TextView
                     android:id="@+id/txt_TimerHour"
-                    android:layout_width="fill_parent"
+                    android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="Hours"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#303F9F"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="20dp" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/LinearLayout12"
@@ -115,17 +129,20 @@
                 android:orientation="vertical">
                 <TextView
                     android:id="@+id/txtTimerMinute"
-                    android:layout_width="fill_parent"
+                    android:layout_width="103dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
                     android:gravity="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="#b71c1c"
                     android:textSize="35dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="20dp" />
                 <TextView
                     android:id="@+id/txt_TimerMinute"
-                    android:layout_width="wrap_content"
+                    android:layout_width="99dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
@@ -133,7 +150,11 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#303F9F"
                     android:textStyle="bold"
-                    android:layout_gravity="left" />
+                    android:layout_gravity="left"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="20dp" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/LinearLayout13"
@@ -144,24 +165,31 @@
                 android:orientation="vertical" >
                 <TextView
                     android:id="@+id/txtTimerSecond"
-                    android:layout_width="fill_parent"
+                    android:layout_width="101dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
                     android:gravity="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="#b71c1c"
                     android:textSize="35dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="20dp" />
                 <TextView
                     android:id="@+id/txt_TimerSecond"
-                    android:layout_width="wrap_content"
+                    android:layout_width="102dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="Seconds"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#303F9F"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="20dp" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
@@ -177,14 +205,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="78dp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_marginTop="28dp" />
 
     <ImageView
         android:layout_width="wrap_content"

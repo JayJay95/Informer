@@ -3,10 +3,6 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_timer"
-            android:icon="@drawable/ic_menu_timer"
-            android:title="Countdown" />
-        <item
             android:id="@+id/nav_educate"
             android:icon="@drawable/ic_menu_educate"
             android:title="Voter Education" />
@@ -21,7 +17,11 @@
         <item
             android:id="@+id/nav_report"
             android:icon="@drawable/ic_report_violation"
-            android:title="Report Violations" />
+            android:title="Report Election Violations" />
+        <item
+            android:id="@+id/nav_timer"
+            android:icon="@drawable/ic_menu_timer"
+            android:title="Countdown" />
     </group>
 
     <item android:title="Communicate">
@@ -30,10 +30,6 @@
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
         </menu>
     </item>
 
