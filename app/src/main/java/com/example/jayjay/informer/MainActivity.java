@@ -128,6 +128,10 @@ public class MainActivity extends AppCompatActivity
             Intent openViolationReports = new Intent(MainActivity.this, ViolationReports.class);
             startActivity(openViolationReports);
 
+        } else if (id == R.id.nav_faqlist) {
+            Intent openFaqList = new Intent(MainActivity.this, FaqList.class);
+            startActivity(openFaqList);
+
         } else if (id == R.id.nav_share) {
 
         }

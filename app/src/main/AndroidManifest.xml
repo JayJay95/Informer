@@ -41,6 +41,10 @@
             android:label="Election Violation Form"
             android:theme="@style/AppTheme" />
         <activity
+            android:name=".FaqList"
+            android:label="Frequently Asked Questions"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".CountDown"
             android:label="Elections Countdown"
             android:theme="@style/AppTheme" />
@@ -58,7 +62,7 @@
 
         <activity
             android:name=".LogInActivity"
-            android:label="Log Into your Account" />
+            android:label="Log In to your Account" />
         <activity
             android:name=".SignUpActivity"
             android:label="Sign up for a New Account"></activity>

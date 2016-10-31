@@ -26,7 +26,8 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.jayjay.informer.PollingStations" />
+        tools:context="com.example.jayjay.informer.PollingStations"
+        tools:layout="@layout/polling_stations" />
 
     <LinearLayout
         android:layout_width="match_parent"
