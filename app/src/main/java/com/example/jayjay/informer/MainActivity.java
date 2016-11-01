@@ -113,10 +113,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_educate) {
 
-//            Intent openVoterEducation = new Intent(MainActivity.this, VoterEducation.class);
-//            startActivity(openVoterEducation);
+            Intent openVoterEducation = new Intent(MainActivity.this, VoterEducation.class);
+            startActivity(openVoterEducation);
 
-            fm.beginTransaction().replace(R.id.content_frame, new VoterEducation()).commit();
+            //fm.beginTransaction().replace(R.id.content_frame, new VoterEducation()).commit();
         } else if (id == R.id.nav_station) {
 
             Intent openPollingStations = new Intent(MainActivity.this, PollingStations.class);

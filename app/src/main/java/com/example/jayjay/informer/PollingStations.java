@@ -4,12 +4,16 @@ package com.example.jayjay.informer;
  * Created by JayJay on 19/09/2016.
  */
 
+import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.Toast;
+import android.Manifest;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -66,14 +70,14 @@ public class PollingStations extends FragmentActivity implements
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
-        initListeners();
+        //initListeners();
     }
 
-    private void initListeners() {
-        //mMap.setOnMarkerClickListener(this);
-        mMap.setOnInfoWindowClickListener(this);
-        mMap.setOnMapClickListener(this);
-    }
+//    private void initListeners() {
+//        //mMap.setOnMarkerClickListener(this);
+//        mMap.setOnInfoWindowClickListener(this);
+//        mMap.setOnMapClickListener(this);
+//    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -83,6 +87,8 @@ public class PollingStations extends FragmentActivity implements
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.setOnMarkerDragListener(this);
         mMap.setOnMapLongClickListener(this);
+        mMap.setOnInfoWindowClickListener(this);
+        mMap.setOnMapClickListener(this);
     }
 
     @Override
@@ -114,15 +120,26 @@ public class PollingStations extends FragmentActivity implements
 
         mMap.setMapType(MAP_TYPES[curMapTypeIndex]);
         mMap.setTrafficEnabled(true);
-        mMap.setMyLocationEnabled(true);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mMap.setMyLocationEnabled(true);
+        } else {
+            Toast.makeText(PollingStations.this, "You have to accept to enjoy all app's services!", Toast.LENGTH_LONG).show();
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED) {
+                mMap.setMyLocationEnabled(true);
+            }
+        }
+
         mMap.getUiSettings().setZoomControlsEnabled(true);
     }
 
     @Override
     public void onConnected(Bundle bundle) {
-        mCurrentLocation = LocationServices
-                .FusedLocationApi
-                .getLastLocation(mGoogleApiClient);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mCurrentLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+        }
 
         initCamera(mCurrentLocation);
     }
@@ -181,7 +198,7 @@ public class PollingStations extends FragmentActivity implements
         options.image(BitmapDescriptorFactory
                 .fromBitmap(BitmapFactory
                         .decodeResource(getResources(),
-                                R.mipmap.ic_logo)));
+                                R.mipmap.ic_launcher)));
         mMap.addGroundOverlay(options);
     }
 
