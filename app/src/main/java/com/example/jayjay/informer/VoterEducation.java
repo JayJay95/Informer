@@ -27,7 +27,7 @@ public class VoterEducation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(VoterEducation.this, VoterRegContent.class);
+                Intent i = new Intent(VoterEducation.this, VoterRegMainPage.class);
                 startActivity(i);
             }
         });

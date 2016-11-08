@@ -2,10 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jayjay.informer">
 
-    <permission
-        android:name="com.example.jayjay.informer.permission.MAPS_RECEIVE"
-        android:protectionLevel="signature" />
-
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -18,6 +14,14 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- if you want to load images from a file OR from the internet -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
         android:allowBackup="true"
@@ -59,7 +63,6 @@
             android:name=".VoterRegContent"
             android:label="Voter Registraton Process"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".LogInActivity"
             android:label="Log In to your Account" />
@@ -69,6 +72,39 @@
         <activity
             android:name=".ShowDescription"
             android:label="News Description" />
+        <activity
+            android:name=".Alerts"
+            android:label="Subscribe to Alerts" />
+        <activity
+            android:name=".VoterRegSlider"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".VoterRegMainPage"
+            android:label="Learn about Voter Registration"
+            android:theme="@style/AppTheme" />
+        <!-- [START firebase_service] -->
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- [END firebase_service] -->
+        <!-- [START firebase_iid_service] -->
+        <service android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- [END firebase_iid_service] -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_alerts" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <!-- [END fcm_default_icon] -->
 
         <meta-data
             android:name="com.google.android.gms.version"

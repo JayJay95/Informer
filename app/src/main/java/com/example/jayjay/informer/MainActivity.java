@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.kobakei.ratethisapp.RateThisApp;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -59,8 +60,20 @@ public class MainActivity extends AppCompatActivity
             loadLogInView();
         }
 
+        RateThisApp.Config config = new RateThisApp.Config(3, 5);
+        RateThisApp.init(config);
+
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Monitor launch times and interval from installation
+        RateThisApp.onStart(this);
+        // If the criteria is satisfied, "Rate this app" dialog will be shown
+        RateThisApp.showRateDialogIfNeeded(this);
+    }
 
     @Override
     public void onBackPressed() {
@@ -132,8 +145,9 @@ public class MainActivity extends AppCompatActivity
             Intent openFaqList = new Intent(MainActivity.this, FaqList.class);
             startActivity(openFaqList);
 
-        } else if (id == R.id.nav_share) {
-
+        } else if (id == R.id.nav_alerts) {
+            Intent openAlerts = new Intent(MainActivity.this, Alerts.class);
+            startActivity(openAlerts);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
