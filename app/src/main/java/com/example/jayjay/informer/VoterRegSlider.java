@@ -19,8 +19,18 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.firebase.client.Firebase;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import static com.example.jayjay.informer.R.id.imageView;
+
 
 public class VoterRegSlider extends AppCompatActivity {
 
@@ -30,6 +40,7 @@ public class VoterRegSlider extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
+    private StorageReference storageRef;
     //private PrefManager prefManager;
 
     @Override
@@ -55,8 +66,18 @@ public class VoterRegSlider extends AppCompatActivity {
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
 
+//        //storageRef = FirebaseStorage.getInstance().getReference();
+//        StorageReference voteRegPicOne = storageRef.child("drawable-hdpi/voterregistrationstep1.jpg");
+//        // ImageView in your Activity
+//        ImageView targetImageView  = (ImageView) findViewById(R.id.voterregslide1);
+//
+//// Load the image using Glide
+//        Glide.with(this /* context */)
+//                .using(new FirebaseImageLoader())
+//                .load(voteRegPicOne)
+//                .into(targetImageView);
 
-        // layouts of all welcome sliders
+        // layouts of all voterreg sliders
         // add few more layouts if you want
         layouts = new int[]{
                 R.layout.voter_reg_slide_one,

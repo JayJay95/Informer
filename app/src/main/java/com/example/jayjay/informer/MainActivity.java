@@ -135,7 +135,9 @@ public class MainActivity extends AppCompatActivity
             Intent openPollingStations = new Intent(MainActivity.this, PollingStations.class);
             startActivity(openPollingStations);
 
-        } else if (id == R.id.nav_candidate) {
+        } else if (id == R.id.nav_invites) {
+            Intent openInvites = new Intent(MainActivity.this, VoteInvite.class);
+            startActivity(openInvites);
 
         } else if (id == R.id.nav_report) {
             Intent openViolationReports = new Intent(MainActivity.this, ViolationReports.class);

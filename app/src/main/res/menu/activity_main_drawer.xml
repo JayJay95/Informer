@@ -3,6 +3,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
+        <item
             android:id="@+id/nav_educate"
             android:icon="@drawable/ic_menu_educate"
             android:title="Voter Education" />
@@ -10,10 +14,6 @@
             android:id="@+id/nav_station"
             android:icon="@drawable/ic_polling_station"
             android:title="Polling Stations" />
-        <item
-            android:id="@+id/nav_candidate"
-            android:icon="@drawable/ic_menu_candidate"
-            android:title="Candidates" />
         <item
             android:id="@+id/nav_faqlist"
             android:icon="@drawable/ic_faq_list"
@@ -34,6 +34,10 @@
                 android:id="@+id/nav_alerts"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Alerts" />
+            <item
+                android:id="@+id/nav_invites"
+                android:icon="@drawable/ic_chat_black_24dp"
+                android:title="Invites" />
         </menu>
     </item>
 

@@ -33,7 +33,7 @@
     <string name="msg_subscribed">Subscribed to Alerts</string>
     <string name="log_token">Log Token</string>
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
-    <string name="why_register">Why Register?\n</string>
+    <string name="why_register">Why Register?</string>
     <string name="voterreg_message">
         Voting provides an opportunity to choose a leader of your choice \n\n
         Voting provides an opportunity to vie in elections. By law, only registered voters are allowed to vie for elections. \n\n
@@ -68,4 +68,32 @@ Weka saini kwa IEBC rejea kitabu na chukua karatasi ya usajili. Acha kituo cha u
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
+
+
+    <string name="send_vote_invite">Remind your friends to vote by sending them an invite</string>
+    <string name="action_deep_link">
+        com.google.android.gms.samples.appinvite.DEEP_LINK_ACTION
+    </string>
+
+    <string name="invite">Send invitations!</string>
+    <string name="welcome">Invites</string>
+    <string name="referrer_hint">Deep link not provided</string>
+    <string name="deep_link_default">Deep link not set</string>
+    <string name="invitation_id_default">Invitation ID not set</string>
+    <string name="invite_friends">Invite Friends</string>
+
+    <string name="invitation_title">Send Invite to Vote</string>
+    <string name="invitation_message">Remember to vote in these elections!</string>
+    <string name="invitation_deep_link">http://example.com/offer/five_dollar_offer</string>
+    <string name="invitation_custom_image">https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png</string>
+    <string name="invitation_cta">Install!</string>
+
+    <string name="deep_link_fmt" formatted="false">Deep Link: %s</string>
+    <string name="invitation_id_fmt" formatted="false">Invitation ID: %s</string>
+
+    <string name="sent_invitations_fmt" formatted="false">Sent %d invitations</string>
+    <string name="send_failed">Sending invitations failed</string>
+    <string name="invite_dialog_title">You got an invitation!</string>
+
+    <string name="google_play_services_error">Google Play Services Error</string>
 </resources>
