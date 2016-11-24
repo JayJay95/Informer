@@ -11,23 +11,26 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
+        android:textColor="@color/action_bar"
         android:text="@string/why_register"
         android:textAlignment="center" />
 
-    <ImageButton
+    <Button
         android:id="@+id/speakVoterRegButton"
-        android:layout_width="60dp"
+        android:layout_width="100dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:src="@drawable/ic_speaker_black_24dp" />
+        android:text="Read Aloud"
+        android:drawableLeft="@drawable/ic_speaker_black_24dp" />
 
     <TextView
         android:id="@+id/voterRegMainPageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|left"
+        android:layout_gravity="center|start"
         android:gravity="center_horizontal"
+        android:textColor="@color/action_bar"
         android:text="@string/voterreg_message"
         android:textAlignment="center" />
 
@@ -37,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
+        android:textColor="@color/dot_dark_screen1"
         android:text="@string/begin_slider" />
 
     <Button
@@ -44,6 +48,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:textColor="@color/colorAccent"
         android:layout_marginTop="20dp"
         android:text="@string/begin_quizz" />
 </LinearLayout>

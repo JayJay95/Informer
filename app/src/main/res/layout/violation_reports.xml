@@ -23,6 +23,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="First Name" />
 
             <EditText
@@ -34,6 +35,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="Last Name" />
 
             <EditText
@@ -45,103 +47,182 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="County" />
 
             <EditText
                 android:id="@+id/editTextCounty"
+                android:hint="e.g Nairobi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Constituency" />
+
+            <EditText
+                android:id="@+id/editTextConstituency"
+                android:hint="e.g Westlands"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Ward" />
+
+            <EditText
+                android:id="@+id/editTextWard"
+                android:hint="e.g Kitisuru"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Polling Station" />
+
+            <EditText
+                android:id="@+id/editTextPollingStation"
+                android:hint="e.g Loresho Primary School"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="Description" />
 
             <EditText
-                android:id="@+id/editTextPerpetrator"
+                android:id="@+id/editTextDescription"
+                android:hint="Describe the offence"
+                android:inputType="textMultiLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="Perpetrator" />
 
             <EditText
-                android:id="@+id/editTextDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Attach a Video, Image or Audio of the Violation"
-                android:textStyle="bold" />
-
-            <!-- Capture picture button -->
-
-            <Button
-                android:id="@+id/btnCapturePicture"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="25dp"
-                android:background="@color/btn_bg"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="@string/btnTakePicture"
-                android:textColor="@color/white" />
-
-            <!-- Record video button -->
-
-
-            <Button
-                android:id="@+id/btnRecordVideo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@color/btn_bg"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="@string/btnRecordVideo"
-                android:textColor="@color/white" />
-
-            <Button
-                android:id="@+id/btnRecordAudio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@color/btn_bg"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="@string/btnRecordAudio"
-                android:textColor="@color/white" />
-
-            <Button
-                android:id="@+id/buttonSave"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Submit Report" />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Persons"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textViewPersons"
+                android:id="@+id/editTextPerpetrator"
+                android:hint="Name the suspect"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Attach an Image, Video or Audio of the Violation"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Capture picture button -->
+                <ImageButton
+                    android:id="@+id/btnCapturePicture"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="@color/colorAccent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="50dp"
+                    android:src="@drawable/ic_photo_camera_black_24dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp" />
+
+                <!-- Record video button -->
+
+                <ImageButton
+                    android:id="@+id/btnRecordVideo"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="@color/colorAccent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginRight="50dp"
+                    android:src="@drawable/ic_videocam_black_24dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp" />
+
+                <ImageButton
+                    android:id="@+id/btnRecordAudio"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="@color/colorAccent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="40dp"
+                    android:src="@drawable/ic_speaker_black_24dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonSave"
+                    android:background="@drawable/circle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Submit Report" />
+
+
+                <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Persons"-->
+                <!--android:textStyle="bold" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/textViewPersons"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+
+
+                <Button
+                    android:id="@+id/showReports"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/circle"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="Show Reports" />
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton" />
 
 </LinearLayout>

@@ -35,7 +35,7 @@
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
     <string name="why_register">Why Register?</string>
     <string name="voterreg_message">
-        Voting provides an opportunity to choose a leader of your choice \n\n
+        \n Voting provides an opportunity to choose a leader of your choice \n\n
         Voting provides an opportunity to vie in elections. By law, only registered voters are allowed to vie for elections. \n\n
         You safeguard your rights and freedoms as provided for in the constitution. \n\n
         You give legitimacy to leaders. By electing their leaders, voters give their consent to be led by whoever they have chosen and to reject those who fail to sufficiently represent their interests.\n</string>
@@ -46,24 +46,24 @@
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
 
-    <string name="slide_1_title">Hatua ya Kwanza</string>
-    <string name="voter_reg_slide_1_desc">Wasilisha ID yako / Pasipoti kwa karani</string>
+    <string name="slide_1_title">Step One</string>
+    <string name="voter_reg_slide_1_desc">Present your ID/Passport to clerk</string>
 
-    <string name="slide_2_title">Hatua ya Pili</string>
-    <string name="voter_reg_slide_2_desc">Karani anakamata maelezo yako ya utambulisho</string>
+    <string name="slide_2_title">Step Two</string>
+    <string name="voter_reg_slide_2_desc">The clerk captures your identity details</string>
 
-    <string name="slide_3_title">Hatua ya Tatu</string>
-    <string name="voter_reg_slide_3_desc">Thibitisha maelezo ya utambulisho yako ni sahihi</string>
+    <string name="slide_3_title">Step Three</string>
+    <string name="voter_reg_slide_3_desc">Confirm your identity details are correct</string>
 
-    <string name="slide_4_title">Hatua ya Nne</string>
-    <string name="voter_reg_slide_4_desc">Weka vidole juu ya msomaji fingerprinti</string>
+    <string name="slide_4_title">Step Four</string>
+    <string name="voter_reg_slide_4_desc">Place your fingers on the fingerprint reader</string>
 
-    <string name="slide_5_title">Hatua ya Tano</string>
-    <string name="voter_reg_slide_5_desc">Chukua picha za pasipoti na hakikisha ni sahihi</string>
+    <string name="slide_5_title">Step Five</string>
+    <string name="voter_reg_slide_5_desc">Have your passport size photo taken and confirm it is clear</string>
 
-    <string name="slide_6_title">Hatua ya Sita</string>
+    <string name="slide_6_title">Step Six</string>
     <string name="voter_reg_slide_6_desc">
-Weka saini kwa IEBC rejea kitabu na chukua karatasi ya usajili. Acha kituo cha usajili</string>
+Sign IEBC reference book and take registration slip. Leave registration centre.</string>
 
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
@@ -96,4 +96,10 @@ Weka saini kwa IEBC rejea kitabu na chukua karatasi ya usajili. Acha kituo cha u
     <string name="invite_dialog_title">You got an invitation!</string>
 
     <string name="google_play_services_error">Google Play Services Error</string>
+    <string name="title_activity_show_reports">ShowReports</string>
+
+    <string name="search_polling_text">Search for a Polling Station or Registration Centre</string>
+    <string name="county_text">County</string>
+    <string name="constituency_text">Constituency</string>
+    <string name="ward_text">Ward</string>
 </resources>

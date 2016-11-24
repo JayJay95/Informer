@@ -19,7 +19,7 @@ import java.util.Locale;
 public class VoterRegMainPage extends AppCompatActivity implements
         TextToSpeech.OnInitListener {
     Button sliderButton;
-    ImageButton speechVoterRegButton;
+    Button speechVoterRegButton;
     private TextToSpeech tts;
     private TextView voterRegContent;
 
@@ -36,12 +36,13 @@ public class VoterRegMainPage extends AppCompatActivity implements
                 // TODO Auto-generated method stub
                 Intent i = new Intent(VoterRegMainPage.this, VoterRegSlider.class);
                 startActivity(i);
+                speechVoterRegButton.setEnabled(false);
             }
         });
 
         tts = new TextToSpeech(this, this);
         voterRegContent = (TextView) findViewById(R.id.voterRegMainPageText);
-        speechVoterRegButton = (ImageButton) findViewById(R.id.speakVoterRegButton);
+        speechVoterRegButton = (Button) findViewById(R.id.speakVoterRegButton);
         speechVoterRegButton.setOnClickListener(new View.OnClickListener() {
 
             @Override

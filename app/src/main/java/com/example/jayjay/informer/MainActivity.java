@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity
             //fm.beginTransaction().replace(R.id.content_frame, new VoterEducation()).commit();
         } else if (id == R.id.nav_station) {
 
-            Intent openPollingStations = new Intent(MainActivity.this, PollingStations.class);
+            Intent openPollingStations = new Intent(MainActivity.this, SearchPollingStation.class);
             startActivity(openPollingStations);
 
         } else if (id == R.id.nav_invites) {

@@ -5,9 +5,12 @@ package com.example.jayjay.informer;
  */
 public class ReportPOJO {
     //name and address string
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String county;
+    private String constituency;
+    private String ward;
+    private String pollingStation;
     private String description;
     private String perpetrator;
 
@@ -15,21 +18,31 @@ public class ReportPOJO {
       /*Blank default constructor essential for Firebase*/
     }
 
+    public ReportPOJO(String firstName, String lastName, String county, String constituency, String ward, String pollingStation, String description, String perpetrator) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.county = county;
+        this.constituency = constituency;
+        this.ward = ward;
+        this.pollingStation = pollingStation;
+        this.description = description;
+        this.perpetrator = perpetrator;
+    }
     //Getters and setters
     public String getFirstName() {
-        return firstname;
+        return firstName;
     }
 
-    public void setFirstName(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return lastname;
+        return lastName;
     }
 
-    public void setLastName(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getCounty() {
@@ -38,6 +51,30 @@ public class ReportPOJO {
 
     public void setCounty(String county) {
         this.county = county;
+    }
+
+    public String getConstituency() {
+        return constituency;
+    }
+
+    public void setConstituency(String constituency) {
+        this.constituency = constituency;
+    }
+
+    public String getWard() {
+        return ward;
+    }
+
+    public void setWard(String ward) {
+        this.ward = ward;
+    }
+
+    public String getPollingStation() {
+        return pollingStation;
+    }
+
+    public void setPollingStation(String pollingStation) {
+        this.pollingStation = pollingStation;
     }
 
     public String getDescription() {

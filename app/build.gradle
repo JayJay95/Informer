@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.jayjay.informer"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -44,9 +44,17 @@ dependencies {
     compile 'com.google.firebase:firebase-core:9.8.0'
     compile 'com.google.firebase:firebase-messaging:9.8.0'
     compile 'com.google.firebase:firebase-storage:9.8.0'
-    compile 'com.firebaseui:firebase-ui-storage:0.6.0'
+    compile 'com.firebaseui:firebase-ui-storage:1.0.0'
+    compile 'com.firebaseui:firebase-ui-database:1.0.0'
+    compile 'com.firebaseui:firebase-ui-auth:1.0.0'
     compile 'com.google.firebase:firebase-invites:9.8.0'
+    //Volley Library
+    compile 'com.mcxiaoke.volley:library-aar:1.0.0'
+    compile 'com.jaredrummler:material-spinner:1.1.0'
 }
 
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
 
 apply plugin: 'com.google.gms.google-services'
