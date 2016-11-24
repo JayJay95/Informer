@@ -48,27 +48,48 @@
 
     <string name="slide_1_title">Step One</string>
     <string name="voter_reg_slide_1_desc">Present your ID/Passport to clerk</string>
+    <string name="voting_process_slide_1_desc">Present your voters card and ID</string>
 
     <string name="slide_2_title">Step Two</string>
     <string name="voter_reg_slide_2_desc">The clerk captures your identity details</string>
+    <string name="voting_process_slide_2_desc">Your name is called out</string>
 
     <string name="slide_3_title">Step Three</string>
     <string name="voter_reg_slide_3_desc">Confirm your identity details are correct</string>
+    <string name="voting_process_slide_3_desc">You are given stamped ballot papers </string>
 
     <string name="slide_4_title">Step Four</string>
     <string name="voter_reg_slide_4_desc">Place your fingers on the fingerprint reader</string>
+    <string name="voting_process_slide_4_desc">Mark the ballot papers</string>
 
     <string name="slide_5_title">Step Five</string>
     <string name="voter_reg_slide_5_desc">Have your passport size photo taken and confirm it is clear</string>
+    <string name="voting_process_slide_5_desc">Cast your vote</string>
 
     <string name="slide_6_title">Step Six</string>
     <string name="voter_reg_slide_6_desc">
 Sign IEBC reference book and take registration slip. Leave registration centre.</string>
+    <string name="voting_process_slide_6_desc">Left small finger marked with ink</string>
+
+    <string name="slide_7_title">Step Seven</string>
+    <string name="voting_process_slide_7_desc">Leave polling station</string>
 
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
+    <string name="read_aloud">READ ALOUD</string>
 
+    <string name="why_vote">Why Vote?</string>
+    <string name="voting_msg">
+        \n To Vote, you must: \n
+       \t• be a Kenyan citizen \n\t• be at least 18 years old and above \n\t• be Registered as a Voter\n\n
+        The polling station is where you vote.\n\n
+        Inside the polling station is the Presiding Officer. He or she will inform you about the proper identification to use and the procedure to follow.\n\n
+        You will show your national ID or my valid Passport, which ever you used to register. \n\n
+        The voting screen or booth is a private place in the polling station where you mark your ballot.\n\n
+        The ballot box is where you put your marked ballot paper after you make your choice.
+
+    </string>
 
     <string name="send_vote_invite">Remind your friends to vote by sending them an invite</string>
     <string name="action_deep_link">
@@ -98,8 +119,10 @@ Sign IEBC reference book and take registration slip. Leave registration centre.<
     <string name="google_play_services_error">Google Play Services Error</string>
     <string name="title_activity_show_reports">ShowReports</string>
 
+    <string name="report_violation">Report an election offence to the authorities</string>
     <string name="search_polling_text">Search for a Polling Station or Registration Centre</string>
     <string name="county_text">County</string>
     <string name="constituency_text">Constituency</string>
     <string name="ward_text">Ward</string>
+    <string name="title_activity_voting_main_page">Learn about Voting</string>
 </resources>

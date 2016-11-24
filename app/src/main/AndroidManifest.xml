@@ -47,7 +47,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ViolationReports"
-            android:label="Election Violation Form"
+            android:label="Election Offence Form"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".FaqList"
@@ -146,7 +146,12 @@
             android:name=".ShowReports"
             android:label="@string/title_activity_show_reports"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SearchPollingStation"></activity>
+        <activity android:name=".SearchPollingStation" />
+        <activity
+            android:name=".VotingMainPage"
+            android:label="@string/title_activity_voting_main_page" />
+        <activity android:name=".VotingProcessContent" />
+        <activity android:name=".VotingProcessSlider"></activity>
     </application>
 
 </manifest>

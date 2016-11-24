@@ -67,15 +67,6 @@ public class ViolationReports extends AppCompatActivity implements View.OnClickL
 
     private static final int CAMERA_REQUEST_CODE = 1;
     private static final int REQUEST_VIDEO_CAPTURE = 2;
-    private static final String VIDEO_STORAGE_KEY = "viewvideo";
-    private static final String VIDEOVIEW_VISIBILITY_STORAGE_KEY = "videoviewvisibility";
-    private static final String IMAGEVIEW_VISIBILITY_STORAGE_KEY = "imageviewvisibility";
-    private static final String BITMAP_STORAGE_KEY = "viewbitmap";
-    private VideoView mVideoView;
-    private Uri mVideoUri;
-    private ImageView mImageView;
-    private Bitmap mImageBitmap;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +95,7 @@ public class ViolationReports extends AppCompatActivity implements View.OnClickL
 
         showReports = (Button) findViewById(R.id.showReports);
 
+
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,11 +121,35 @@ public class ViolationReports extends AppCompatActivity implements View.OnClickL
 //                reportpojo.setCounty(county);
 //                reportpojo.setDescription(description);
 //                reportpojo.setPerpetrator(perpetrator);
+                if (firstname.equals("")) {
+                    editFirstName.setError("Your First Name is required!");
+                    Toast.makeText(v.getContext(), "Your First Name is required!", Toast.LENGTH_LONG).show();
+                } else if (lastname.equals("")) {
+                    editLastName.setError("Your Last Name is required!");
+                    Toast.makeText(v.getContext(), "Your Last Name is required!", Toast.LENGTH_LONG).show();
+                } else if (county.equals("")) {
+                    editTextCounty.setError("Please fill in the county!");
+                    Toast.makeText(v.getContext(), "Please fill in the county!", Toast.LENGTH_LONG).show();
+                } else if (constituency.equals("")) {
+                    editTextConstituency.setError("Please fill in the constituency!");
+                    Toast.makeText(v.getContext(), "Please fill in the constituency!", Toast.LENGTH_LONG).show();
+                } else if (ward.equals("")) {
+                    editTextWard.setError("Please fill in the ward!");
+                    Toast.makeText(v.getContext(), "Please fill in the ward!", Toast.LENGTH_LONG).show();
+                } else if (pollingstation.equals("")) {
+                    editTextPollingStation.setError("Please fill in the polling station!");
+                    Toast.makeText(v.getContext(), "Please fill in the polling station!", Toast.LENGTH_LONG).show();
+                } else if (description.equals("")) {
+                    editDescription.setError("Please fill in the description!");
+                    Toast.makeText(v.getContext(), "Please fill in the description!", Toast.LENGTH_LONG).show();
+                } else if (perpetrator.equals("")) {
+                    editPerpetrator.setError("Please fill in the perpetrator!!");
+                    Toast.makeText(v.getContext(), "Please fill in the perpetrator!", Toast.LENGTH_LONG).show();
+                } else {
+                    //Storing values to firebase
+                    ref.child("ReportPOJO").push().setValue(new ReportPOJO(firstname, lastname, county, constituency, ward, pollingstation, description, perpetrator));
 
-                //Storing values to firebase
-                ref.child("ReportPOJO").push().setValue(new ReportPOJO(firstname, lastname, county, constituency, ward, pollingstation, description, perpetrator));
-
-                Toast.makeText(v.getContext(), "Report has been sent", Toast.LENGTH_LONG).show();
+                    Toast.makeText(v.getContext(), "Report has been sent", Toast.LENGTH_LONG).show();
 //                //Value event listener for realtime data update
 //                    ref.addValueEventListener(new ValueEventListener() {
 //                        @Override
@@ -156,7 +172,7 @@ public class ViolationReports extends AppCompatActivity implements View.OnClickL
 //                        System.out.println("The read failed: " + firebaseError.getMessage());
 //                    }
 //                });
-
+                }
             }
         });
 
@@ -298,7 +314,7 @@ public class ViolationReports extends AppCompatActivity implements View.OnClickL
 
             String idThree = UUID.randomUUID().toString();
             StorageReference videofilepath = mStorage.child("Video").child(idThree);
-            Uri mVideoUri = Uri.fromFile(new File(mFileName));
+            Uri mVideoUri = Uri.fromFile(new File(videoFileName));
 
             UploadTask uploadTask = videofilepath.putFile(mVideoUri);
             uploadTask.addOnFailureListener(new OnFailureListener() {

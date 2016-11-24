@@ -15,19 +15,31 @@ import android.widget.Button;
  * Created by JayJay on 06/09/2016.
  */
 public class VoterEducation extends AppCompatActivity {
-    Button button;
+    Button goToVoterRegbutton;
+    Button goToVotingbutton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.voter_education_main);
 
-        button = (Button) findViewById(R.id.voterregbutton);
-        button.setOnClickListener(new View.OnClickListener() {
+        goToVoterRegbutton = (Button) findViewById(R.id.voterregbutton);
+        goToVoterRegbutton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent i = new Intent(VoterEducation.this, VoterRegMainPage.class);
+                startActivity(i);
+            }
+        });
+
+        goToVotingbutton = (Button) findViewById(R.id.votingprocessbutton);
+        goToVotingbutton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(VoterEducation.this, VotingMainPage.class);
                 startActivity(i);
             }
         });
