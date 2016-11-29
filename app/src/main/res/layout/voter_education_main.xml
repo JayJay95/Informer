@@ -207,6 +207,174 @@
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/voterrightscard_view"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/voterrightsthumbnail"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_alignParentTop="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/rights_card" />
+
+                    <TextView
+                        android:id="@+id/voterrightstitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/voterrightsthumbnail"
+                        android:maxLines="3"
+                        android:padding="8dp"
+                        android:text="Rights of a Voter"
+                        android:textColor="#222"
+                        android:textSize="22dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/voterrightsdescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/voterrightstitle"
+                        android:maxLines="3"
+                        android:padding="8dp"
+                        android:text="Know your rights as a Kenyan Voter"
+                        android:textColor="#666"
+                        android:textSize="14dp" />
+
+                    <Button
+                        android:id="@+id/voterrightsbutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:minWidth="65dp"
+                        android:layout_below="@+id/voterrightsdescription"
+                        android:background="@null"
+                        android:textColor="#00B0FF"
+                        android:text="Learn" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/voterdutiescard_view"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/voterdutiesthumbnail"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_alignParentTop="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/duties_card" />
+
+                    <TextView
+                        android:id="@+id/voterdutiestitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/voterdutiesthumbnail"
+                        android:maxLines="3"
+                        android:padding="8dp"
+                        android:text="Duties of a Voter"
+                        android:textColor="#222"
+                        android:textSize="22dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/voterdutiesdescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/voterdutiestitle"
+                        android:maxLines="3"
+                        android:padding="8dp"
+                        android:text="Know your duties as a Kenyan Voter"
+                        android:textColor="#666"
+                        android:textSize="14dp" />
+
+                    <Button
+                        android:id="@+id/voterdutiesbutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:minWidth="65dp"
+                        android:layout_below="@+id/voterdutiesdescription"
+                        android:background="@null"
+                        android:textColor="#00B0FF"
+                        android:text="Learn" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/electionoffencescard_view"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/electionoffencesthumbnail"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_alignParentTop="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/election_offences_card" />
+
+                    <TextView
+                        android:id="@+id/electionoffencestitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/electionoffencesthumbnail"
+                        android:maxLines="3"
+                        android:padding="8dp"
+                        android:text="Election Offences"
+                        android:textColor="#222"
+                        android:textSize="22dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/electionoffencesdescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/electionoffencestitle"
+                        android:maxLines="3"
+                        android:padding="8dp"
+                        android:text="Offences related to Voting"
+                        android:textColor="#666"
+                        android:textSize="14dp" />
+
+                    <Button
+                        android:id="@+id/electionoffencesbutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:minWidth="65dp"
+                        android:layout_below="@+id/electionoffencesdescription"
+                        android:background="@null"
+                        android:textColor="#00B0FF"
+                        android:text="Learn" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
     </ScrollView>
 

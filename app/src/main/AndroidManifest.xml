@@ -76,8 +76,8 @@
             android:label="News Description" />
         <activity
             android:name=".Alerts"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="Subscribe to Alerts" />
+            android:label="Subscribe to Alerts"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VoterRegSlider"
             android:theme="@style/AppTheme" />
@@ -156,8 +156,20 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".VotingProcessContent" />
         <activity android:name=".VotingProcessSlider" />
-        <!--<activity android:name=".HomeActivity"-->
-        <!--android:theme="@style/AppTheme.NoActionBar" ></activity>-->
+        <!-- <activity android:name=".HomeActivity" -->
+        <!-- android:theme="@style/AppTheme.NoActionBar" ></activity> -->
+        <activity
+            android:name=".VoterRights"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VoterDuties"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ElectionOffences"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Penalties"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -31,6 +31,9 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 public class VoterEducation extends AppCompatActivity {
     Button goToVoterRegbutton;
     Button goToVotingbutton;
+    Button goToVoterRightsbutton;
+    Button goToVoterDutiesbutton;
+    Button goToElectionOffencesbutton;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -149,6 +152,36 @@ public class VoterEducation extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent i = new Intent(VoterEducation.this, VotingMainPage.class);
+                startActivity(i);
+            }
+        });
+        goToVoterRightsbutton = (Button) findViewById(R.id.voterrightsbutton);
+        goToVoterRightsbutton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(VoterEducation.this, VoterRights.class);
+                startActivity(i);
+            }
+        });
+        goToVoterDutiesbutton = (Button) findViewById(R.id.voterdutiesbutton);
+        goToVoterDutiesbutton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(VoterEducation.this, VoterDuties.class);
+                startActivity(i);
+            }
+        });
+        goToElectionOffencesbutton = (Button) findViewById(R.id.electionoffencesbutton);
+        goToElectionOffencesbutton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(VoterEducation.this, ElectionOffences.class);
                 startActivity(i);
             }
         });

@@ -66,6 +66,7 @@
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/colorAccent"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:text="@string/begin_quiz" />
         </LinearLayout>
     </ScrollView>

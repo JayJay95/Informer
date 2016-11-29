@@ -1,24 +1,16 @@
 package com.example.jayjay.informer;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -30,26 +22,24 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Locale;
 
-import java.util.ArrayList;
-import java.util.List;
+public class ElectionOffences extends AppCompatActivity implements
+        TextToSpeech.OnInitListener {
 
-public class SearchPollingStation extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    Button speechElectionOffencesButton;
+    Button penaltiesButton;
+    private TextToSpeech tts;
+    private TextView electionOffencesContent;
     private FirebaseAuth firebaseAuth;
-    private DatabaseReference databaseReference;
-    private Spinner countyspinner;
-    private ArrayAdapter<Stations> countyNamesAdapter;
-    private final List<Stations> county_object = new ArrayList<Stations>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_polling_station);
-
+        setContentView(R.layout.activity_election_offences);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() == null) {
@@ -109,73 +99,101 @@ public class SearchPollingStation extends AppCompatActivity implements AdapterVi
                         if (drawerItem != null) {
                             Intent intent = null;
                             if (drawerItem.getIdentifier() == 1) {
-                                intent = new Intent(SearchPollingStation.this, HomeActivity.class);
+                                intent = new Intent(ElectionOffences.this, HomeActivity.class);
                             }
                             if (drawerItem.getIdentifier() == 2) {
-                                intent = new Intent(SearchPollingStation.this, VoterEducation.class);
+                                intent = new Intent(ElectionOffences.this, VoterEducation.class);
                             }
                             if (drawerItem.getIdentifier() == 3) {
-                                intent = new Intent(SearchPollingStation.this, SearchPollingStation.class);
+                                intent = new Intent(ElectionOffences.this, SearchPollingStation.class);
                             }
                             if (drawerItem.getIdentifier() == 4) {
-                                intent = new Intent(SearchPollingStation.this, FaqList.class);
+                                intent = new Intent(ElectionOffences.this, FaqList.class);
                             }
                             if (drawerItem.getIdentifier() == 5) {
-                                intent = new Intent(SearchPollingStation.this, ViolationReports.class);
+                                intent = new Intent(ElectionOffences.this, ViolationReports.class);
                             }
                             if (drawerItem.getIdentifier() == 6) {
-                                intent = new Intent(SearchPollingStation.this, CountDown.class);
+                                intent = new Intent(ElectionOffences.this, CountDown.class);
                             }
                             if (drawerItem.getIdentifier() == 7) {
-                                intent = new Intent(SearchPollingStation.this, Alerts.class);
+                                intent = new Intent(ElectionOffences.this, Alerts.class);
                             }
                             if (drawerItem.getIdentifier() == 8) {
-                                intent = new Intent(SearchPollingStation.this, VoteInvite.class);
+                                intent = new Intent(ElectionOffences.this, VoteInvite.class);
                             }
                             if (intent != null) {
-                                SearchPollingStation.this.startActivity(intent);
+                                ElectionOffences.this.startActivity(intent);
                             }
                         }
                         return false;
                     }
                 })
                 .build();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        databaseReference.child("pollingStationsData").addValueEventListener(new ValueEventListener() {
+        tts = new TextToSpeech(this, this);
+        electionOffencesContent = (TextView) findViewById(R.id.electionOffencesMainPageText);
+        speechElectionOffencesButton = (Button) findViewById(R.id.speakElectionOffencesButton);
+        speechElectionOffencesButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                final List<String> county_name = new ArrayList<String>();
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
 
-                for (DataSnapshot countySnapshot : dataSnapshot.getChildren()) {
-                    String countyName = countySnapshot.child("county_name").getValue(String.class);
-                    county_name.add(countyName);
-                }
-                countyspinner = (Spinner) findViewById(R.id.county_spinner);
-                countyspinner.setOnItemSelectedListener(SearchPollingStation.this);
-                ArrayAdapter<String> countyNamesAdapter = new ArrayAdapter<String>(SearchPollingStation.this, android.R.layout.simple_spinner_item, county_name);
-                countyNamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                countyspinner.setAdapter(countyNamesAdapter);
+                speakOut();
 
             }
+        });
+
+        penaltiesButton = (Button) findViewById(R.id.penaltiesButton);
+        penaltiesButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(ElectionOffences.this, Penalties.class);
+                startActivity(i);
+                speechElectionOffencesButton.setEnabled(false);
             }
-
-
         });
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        Snackbar.make(view, "Clicked " + adapterView.getItemAtPosition(i).toString(), Snackbar.LENGTH_LONG).show();
+    public void onDestroy() {
+        // Don't forget to shutdown tts!
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onDestroy();
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
+    public void onInit(int status) {
+
+        if (status == TextToSpeech.SUCCESS) {
+
+            int result = tts.setLanguage(Locale.US);
+            tts.setSpeechRate(1);
+
+            if (result == TextToSpeech.LANG_MISSING_DATA
+                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "This Language is not supported");
+            } else {
+                speechElectionOffencesButton.setEnabled(true);
+                //speakOut();
+            }
+
+        } else {
+            Log.e("TTS", "Initilization Failed!");
+        }
 
     }
+
+    private void speakOut() {
+
+        String text = electionOffencesContent.getText().toString();
+
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+    }
 }
-
-

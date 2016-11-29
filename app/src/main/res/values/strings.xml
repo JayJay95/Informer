@@ -49,6 +49,7 @@
         You give legitimacy to leaders. By electing their leaders, voters give their consent to be led by whoever they have chosen and to reject those who fail to sufficiently represent their interests.\n</string>
     <string name="begin_slider">Begin Slideshow</string>
     <string name="begin_quiz">Take a Quiz</string>
+    <string name="begin_penalties">Penalties</string>
 
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
@@ -98,7 +99,28 @@ Sign IEBC reference book and take registration slip. Leave registration centre.<
         The ballot box is where you put your marked ballot paper after you make your choice.
 
     </string>
+    <string name="your_rights">Rights of a voter</string>
+    <string name="voter_rights_msg">As a voter, I will have the right to:\n\n a) An orderly peaceful election conducted in accordance with laid down procedures.\n\n
+b) Know the candidates and, through their campaigns, what they stand for.\n\n
+c) Choose a candidate by casting a secret ballot without any interference.\n\n
+d) Vote as my conscience tells you.\n\n e) Express my opinion about the candidates, their campaigns and the issues they talk about with out fear of intimidation.</string>
 
+    <string name="your_duties">Duties of a voter</string>
+    <string name="voter_duties_msg">Remember that rights go with duties. As a voter I must:\n\n a) Keep my National ID or Passport safely.\n\n b) Vote whenever the opportunity is presented.\n\n c) Vote only once in a particular Election\n\n d) Give other Citizens the chance to vote.\n\n e) Use my Vote wisely and not sell it for money or any other temporary material gain.</string>
+
+    <string name="election_offences">Offences related to Voting</string>
+    <string name="election_offences_msg">a) Pretence to be unable to read or write so as to be assisted in voting.\n\n
+b) Pretence to be visually impared or suffering from other disabillity so as to be assisted in voting.\n\n
+c) Forgery or defacing of election materials.\n\n d) Defacing or Destroying ballot paper or election material.\n\n
+e) Attempt to buy or sell ballot papers.\n\n f) Being found in possession of ballot papers, marked or unmarked.\n\n
+g) Inserting or putting anything other than ballot paper in the ballot box.\n\n h) Removal of any election material from a polling station.\n\n
+i) Interference with any Election material, used or intended to be used for an Election.\n\n
+j) Attempts to print a ballot paper\n\n k) Making any mark on any ballot paper issued to any person other than to oneself.\n\n
+l) Attempts to vote when not entitled to.\n\n
+m) Attempts to vote more than once.\n\n n) Interference with a voter in casting of his vote in secret.</string>
+
+    <string name="election_penalties">Penalties</string>
+    <string name="election_penalties_msg">For any of the mentioned offences, one is liable of conviction to a fine not exceeding one million Kenya Shillings or to imprisonment for a term not exceeding six years or to both.</string>
     <string name="send_vote_invite">Remind your friends to vote by sending them an invite</string>
     <string name="action_deep_link">
         com.google.android.gms.samples.appinvite.DEEP_LINK_ACTION
