@@ -32,7 +32,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".HomeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -44,27 +44,27 @@
         <activity
             android:name=".VoterEducation"
             android:label="Voter Education Channel"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ViolationReports"
             android:label="Election Offence Form"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FaqList"
             android:label="Frequently Asked Questions"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CountDown"
             android:label="Elections Countdown"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PollingStations"
             android:label="Find Your Polling Station"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VoterRegContent"
             android:label="Voter Registraton Process"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LogInActivity"
             android:label="Log In to your Account" />
@@ -76,6 +76,7 @@
             android:label="News Description" />
         <activity
             android:name=".Alerts"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="Subscribe to Alerts" />
         <activity
             android:name=".VoterRegSlider"
@@ -83,11 +84,11 @@
         <activity
             android:name=".VoterRegMainPage"
             android:label="Learn about Voter Registration"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VoteInvite"
             android:label="Invite Friends"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DeepLinkActivity"
             android:label="@string/app_name"
@@ -146,12 +147,17 @@
             android:name=".ShowReports"
             android:label="@string/title_activity_show_reports"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SearchPollingStation" />
+        <activity
+            android:name=".SearchPollingStation"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VotingMainPage"
-            android:label="@string/title_activity_voting_main_page" />
+            android:label="@string/title_activity_voting_main_page"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".VotingProcessContent" />
-        <activity android:name=".VotingProcessSlider"></activity>
+        <activity android:name=".VotingProcessSlider" />
+        <!--<activity android:name=".HomeActivity"-->
+        <!--android:theme="@style/AppTheme.NoActionBar" ></activity>-->
     </application>
 
 </manifest>

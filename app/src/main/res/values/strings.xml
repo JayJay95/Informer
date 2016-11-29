@@ -5,6 +5,14 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="drawer_item_home">Home</string>
+    <string name="drawer_item_voter_education">Voter Education</string>
+    <string name="drawer_item_polling_stations">Polling Stations</string>
+    <string name="drawer_item_faq">FAQs</string>
+    <string name="drawer_item_reports">Report Election Offences</string>
+    <string name="drawer_item_countdown">Countdown</string>
+    <string name="drawer_item_alerts">Alerts</string>
+    <string name="drawer_item_invites">Invites</string>
 
     <string name="countdown">There are only</string>
     <string name="countdownleft">till Elections Day!</string>
@@ -40,7 +48,7 @@
         You safeguard your rights and freedoms as provided for in the constitution. \n\n
         You give legitimacy to leaders. By electing their leaders, voters give their consent to be led by whoever they have chosen and to reject those who fail to sufficiently represent their interests.\n</string>
     <string name="begin_slider">Begin Slideshow</string>
-    <string name="begin_quizz">Take a Quizz</string>
+    <string name="begin_quiz">Take a Quiz</string>
 
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>

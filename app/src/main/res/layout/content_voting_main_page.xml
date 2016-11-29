@@ -3,7 +3,8 @@
     android:id="@+id/content_voting_main_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginTop="?attr/actionBarSize">
 
 
     <ScrollView
@@ -65,7 +66,7 @@
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/colorAccent"
                 android:layout_marginTop="20dp"
-                android:text="@string/begin_quizz" />
+                android:text="@string/begin_quiz" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

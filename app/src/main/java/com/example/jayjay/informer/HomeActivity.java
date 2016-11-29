@@ -1,25 +1,18 @@
 package com.example.jayjay.informer;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.kobakei.ratethisapp.RateThisApp;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -31,28 +24,19 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 import static android.R.id.toggle;
 
-/**
- * Created by JayJay on 07/09/2016.
- */
-public class CountDown extends AppCompatActivity {
-    private TextView txtTimerDay, txtTimerHour, txtTimerMinute, txtTimerSecond;
-    private TextView tvEvent;
-    private Handler handler;
-    private Runnable runnable;
-    ActionBarDrawerToggle toggle;
+public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
-
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
+    ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.countdown_main);
+        setContentView(R.layout.activity_home);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -114,31 +98,31 @@ public class CountDown extends AppCompatActivity {
                         if (drawerItem != null) {
                             Intent intent = null;
                             if (drawerItem.getIdentifier() == 1) {
-                                intent = new Intent(CountDown.this, HomeActivity.class);
+                                intent = new Intent(HomeActivity.this, HomeActivity.class);
                             }
                             if (drawerItem.getIdentifier() == 2) {
-                                intent = new Intent(CountDown.this, VoterEducation.class);
+                                intent = new Intent(HomeActivity.this, VoterEducation.class);
                             }
                             if (drawerItem.getIdentifier() == 3) {
-                                intent = new Intent(CountDown.this, SearchPollingStation.class);
+                                intent = new Intent(HomeActivity.this, SearchPollingStation.class);
                             }
                             if (drawerItem.getIdentifier() == 4) {
-                                intent = new Intent(CountDown.this, FaqList.class);
+                                intent = new Intent(HomeActivity.this, FaqList.class);
                             }
                             if (drawerItem.getIdentifier() == 5) {
-                                intent = new Intent(CountDown.this, ViolationReports.class);
+                                intent = new Intent(HomeActivity.this, ViolationReports.class);
                             }
                             if (drawerItem.getIdentifier() == 6) {
-                                intent = new Intent(CountDown.this, CountDown.class);
+                                intent = new Intent(HomeActivity.this, CountDown.class);
                             }
                             if (drawerItem.getIdentifier() == 7) {
-                                intent = new Intent(CountDown.this, Alerts.class);
+                                intent = new Intent(HomeActivity.this, Alerts.class);
                             }
                             if (drawerItem.getIdentifier() == 8) {
-                                intent = new Intent(CountDown.this, VoteInvite.class);
+                                intent = new Intent(HomeActivity.this, VoteInvite.class);
                             }
                             if (intent != null) {
-                                CountDown.this.startActivity(intent);
+                                HomeActivity.this.startActivity(intent);
                             }
                         }
                         return false;
@@ -146,75 +130,35 @@ public class CountDown extends AppCompatActivity {
                 })
                 .build();
 
+        // Initialize Firebase Auth
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
 
-//
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
-//        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(this);
-        txtTimerDay = (TextView) findViewById(R.id.txtTimerDay);
-        txtTimerHour = (TextView) findViewById(R.id.txtTimerHour);
-        txtTimerMinute = (TextView) findViewById(R.id.txtTimerMinute);
-        txtTimerSecond = (TextView) findViewById(R.id.txtTimerSecond);
-        tvEvent = (TextView) findViewById(R.id.tvhappyevent);
-        countDownStart();
+        if (mFirebaseUser == null) {
+            // Not logged in, launch the Log In activity
+            loadLogInView();
+        }
+
+        RateThisApp.Config config = new RateThisApp.Config(3, 5);
+        RateThisApp.init(config);
     }
 
-    public void countDownStart() {
-        handler = new Handler();
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-                handler.postDelayed(this, 1000);
-                try {
-                    SimpleDateFormat dateFormat = new SimpleDateFormat(
-                            "yyyy-MM-dd");
-//  set your event date//YYYY-MM-DD
-                    Date futureDate = dateFormat.parse("2017-08-08");
-                    Date currentDate = new Date();
-                    if (!currentDate.after(futureDate)) {
-                        long diff = futureDate.getTime()
-                                - currentDate.getTime();
-                        long days = diff / (24 * 60 * 60 * 1000);
-                        diff -= days * (24 * 60 * 60 * 1000);
-                        long hours = diff / (60 * 60 * 1000);
-                        diff -= hours * (60 * 60 * 1000);
-                        long minutes = diff / (60 * 1000);
-                        diff -= minutes * (60 * 1000);
-                        long seconds = diff / 1000;
-                        txtTimerDay.setText("" + String.format("%02d", days));
-                        txtTimerHour.setText("" + String.format("%02d", hours));
-                        txtTimerMinute.setText(""
-                                + String.format("%02d", minutes));
-                        txtTimerSecond.setText(""
-                                + String.format("%02d", seconds));
-                    } else {
-                        tvEvent.setVisibility(View.VISIBLE);
-                        tvEvent.setText("The elections have started!");
-                        textViewGone();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        handler.postDelayed(runnable, 1 * 1000);
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Monitor launch times and interval from installation
+        RateThisApp.onStart(this);
+        // If the criteria is satisfied, "Rate this app" dialog will be shown
+        RateThisApp.showRateDialogIfNeeded(this);
     }
 
-    public void textViewGone() {
-        findViewById(R.id.LinearLayout10).setVisibility(View.GONE);
-        findViewById(R.id.LinearLayout11).setVisibility(View.GONE);
-        findViewById(R.id.LinearLayout12).setVisibility(View.GONE);
-        findViewById(R.id.LinearLayout13).setVisibility(View.GONE);
-        findViewById(R.id.textView1).setVisibility(View.GONE);
-        findViewById(R.id.textView2).setVisibility(View.GONE);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -222,18 +166,23 @@ public class CountDown extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+//
         //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
 
-        if( id == android.R.id.home){
-            onBackPressed();
+        if (id == R.id.action_logout) {
+            mFirebaseAuth.signOut();
+            loadLogInView();
         }
+        if (toggle.onOptionsItemSelected(item))
+            return true;
 
         return super.onOptionsItemSelected(item);
     }
 
-
+    private void loadLogInView() {
+        Intent intent = new Intent(this, LogInActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
 }
