@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <!-- if you want to load images from a file OR from the internet -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
@@ -156,8 +157,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".VotingProcessContent" />
         <activity android:name=".VotingProcessSlider" />
-        <!-- <activity android:name=".HomeActivity" -->
-        <!-- android:theme="@style/AppTheme.NoActionBar" ></activity> -->
         <activity
             android:name=".VoterRights"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -169,6 +168,15 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Penalties"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BallotMarkingMainPage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ValidBallot"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RejectBallot"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

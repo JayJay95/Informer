@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.jayjay.informer.BallotMarkingMainPage">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/howToBallotMark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="@string/ballot_marking_main_text"
+                    android:textAlignment="center"
+                    android:textColor="@color/action_bar"
+                    android:textSize="30dp" />
+
+                <Button
+                    android:id="@+id/speakBallotMarkingButton"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:drawableLeft="@drawable/ic_speaker_black_24dp"
+                    android:text="Read Aloud" />
+
+                <TextView
+                    android:id="@+id/ballotMarkingMainPageText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="20dp"
+                    android:text="@string/ballotmarking_message1"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/action_bar" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/bm1" />
+
+                <TextView
+                    android:id="@+id/ballotMarkingMainPageText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="20dp"
+                    android:text="@string/ballotmarking_message2"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/action_bar" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/bm2" />
+
+                <TextView
+                    android:id="@+id/ballotMarkingMainPageText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="20dp"
+                    android:text="@string/ballotmarking_message3"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/action_bar" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/bm3" />
+
+                <TextView
+                    android:id="@+id/validBallotText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="20dp"
+                    android:text="@string/valid_ballot_text"
+                    android:textAlignment="textStart"
+                    android:textStyle="bold"
+                    android:textColor="@color/action_bar" />
+
+                <Button
+                    android:id="@+id/validBallotButton"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/valid_ballot_button"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/rejectBallotText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="20dp"
+                    android:text="@string/reject_ballot_text"
+                    android:textAlignment="textStart"
+                    android:textStyle="bold"
+                    android:textColor="@color/action_bar" />
+
+                <Button
+                    android:id="@+id/rejectBallotButton"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/reject_ballot_button"
+                    android:textColor="@color/dot_dark_screen1" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

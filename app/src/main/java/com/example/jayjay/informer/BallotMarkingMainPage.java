@@ -24,22 +24,22 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import java.util.Locale;
 
-public class ElectionOffences extends AppCompatActivity implements
+public class BallotMarkingMainPage extends AppCompatActivity implements
         TextToSpeech.OnInitListener {
-
-    Button speechElectionOffencesButton;
-    Button penaltiesButton;
+    Button speechBallotMarkingButton;
+    Button validBallotButton;
+    Button rejectBallotButton;
     private TextToSpeech tts;
-    private TextView electionOffencesContent;
+    private TextView ballotMarkingContent;
     private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_election_offences);
+        setContentView(R.layout.activity_ballot_marking_main_page);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() == null) {
@@ -99,42 +99,41 @@ public class ElectionOffences extends AppCompatActivity implements
                         if (drawerItem != null) {
                             Intent intent = null;
                             if (drawerItem.getIdentifier() == 1) {
-                                intent = new Intent(ElectionOffences.this, HomeActivity.class);
+                                intent = new Intent(BallotMarkingMainPage.this, HomeActivity.class);
                             }
                             if (drawerItem.getIdentifier() == 2) {
-                                intent = new Intent(ElectionOffences.this, VoterEducation.class);
+                                intent = new Intent(BallotMarkingMainPage.this, VoterEducation.class);
                             }
                             if (drawerItem.getIdentifier() == 3) {
-                                intent = new Intent(ElectionOffences.this, SearchPollingStation.class);
+                                intent = new Intent(BallotMarkingMainPage.this, SearchPollingStation.class);
                             }
                             if (drawerItem.getIdentifier() == 4) {
-                                intent = new Intent(ElectionOffences.this, FaqList.class);
+                                intent = new Intent(BallotMarkingMainPage.this, FaqList.class);
                             }
                             if (drawerItem.getIdentifier() == 5) {
-                                intent = new Intent(ElectionOffences.this, ViolationReports.class);
+                                intent = new Intent(BallotMarkingMainPage.this, ViolationReports.class);
                             }
                             if (drawerItem.getIdentifier() == 6) {
-                                intent = new Intent(ElectionOffences.this, CountDown.class);
+                                intent = new Intent(BallotMarkingMainPage.this, CountDown.class);
                             }
                             if (drawerItem.getIdentifier() == 7) {
-                                intent = new Intent(ElectionOffences.this, Alerts.class);
+                                intent = new Intent(BallotMarkingMainPage.this, Alerts.class);
                             }
                             if (drawerItem.getIdentifier() == 8) {
-                                intent = new Intent(ElectionOffences.this, VoteInvite.class);
+                                intent = new Intent(BallotMarkingMainPage.this, VoteInvite.class);
                             }
                             if (intent != null) {
-                                ElectionOffences.this.startActivity(intent);
+                                BallotMarkingMainPage.this.startActivity(intent);
                             }
                         }
                         return false;
                     }
                 })
                 .build();
-
         tts = new TextToSpeech(this, this);
-        electionOffencesContent = (TextView) findViewById(R.id.electionOffencesMainPageText);
-        speechElectionOffencesButton = (Button) findViewById(R.id.speakElectionOffencesButton);
-        speechElectionOffencesButton.setOnClickListener(new View.OnClickListener() {
+        ballotMarkingContent = (TextView) findViewById(R.id.ballotMarkingMainPageText1);
+        speechBallotMarkingButton = (Button) findViewById(R.id.speakBallotMarkingButton);
+        speechBallotMarkingButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -145,16 +144,28 @@ public class ElectionOffences extends AppCompatActivity implements
             }
         });
 
-        penaltiesButton = (Button) findViewById(R.id.penaltiesButton);
-        penaltiesButton.setOnClickListener(new View.OnClickListener() {
+        validBallotButton = (Button) findViewById(R.id.validBallotButton);
+        validBallotButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(ElectionOffences.this, Penalties.class);
+                Intent i = new Intent(BallotMarkingMainPage.this, ValidBallot.class);
                 startActivity(i);
-                //speechElectionOffencesButton.setEnabled(false);
                 onPause();
+                //speechBallotMarkingButton.setEnabled(false);
+            }
+        });
+        rejectBallotButton = (Button) findViewById(R.id.rejectBallotButton);
+        rejectBallotButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(BallotMarkingMainPage.this, RejectBallot.class);
+                startActivity(i);
+                onPause();
+                //speechBallotMarkingButton.setEnabled(false);
             }
         });
     }
@@ -181,8 +192,8 @@ public class ElectionOffences extends AppCompatActivity implements
                     || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                 Log.e("TTS", "This Language is not supported");
             } else {
-                speechElectionOffencesButton.setEnabled(true);
-                //speakOut();
+                speechBallotMarkingButton.setEnabled(true);
+                speakOut();
             }
 
         } else {
@@ -193,9 +204,10 @@ public class ElectionOffences extends AppCompatActivity implements
 
     private void speakOut() {
 
-        String text = electionOffencesContent.getText().toString();
+        String text = ballotMarkingContent.getText().toString();
 
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+
     }
 
     public void onPause() {

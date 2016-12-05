@@ -53,7 +53,8 @@
 
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
+    <string name="start">FINISH</string>
+    <string name="myMap">Maps</string>
 
     <string name="slide_1_title">Step One</string>
     <string name="voter_reg_slide_1_desc">Present your ID/Passport to clerk</string>
@@ -121,6 +122,26 @@ m) Attempts to vote more than once.\n\n n) Interference with a voter in casting 
 
     <string name="election_penalties">Penalties</string>
     <string name="election_penalties_msg">For any of the mentioned offences, one is liable of conviction to a fine not exceeding one million Kenya Shillings or to imprisonment for a term not exceeding six years or to both.</string>
+
+    <string name="ballot_marking_main_text">How to Mark a Ballot</string>
+    <string name="ballotmarking_message1">Once my details are confirmed on the register, I am issued with ballot papers to cast my vote.
+The Polling Clerk gives me the ballot papers, I look at the ballot paper keenly to ensure that it bears IEBC validating rubber stamp. If the ballot paper is not rubber stamped, my vote will be rejected.</string>
+
+    <string name="ballotmarking_message2">I take my ballot paper inside the voting screen so that no one can see whom I am voting for. There is a pen there for me to use.
+I open the ballot to see the names of all the candidates. I find the name of the candidate I want.
+I make an X in the space beside the name of the candidate I choose. The X is my vote. If I make a mistake, I can take my ballot back and ask for another one.</string>
+
+
+    <string name="ballotmarking_message3">I fold my ballot to keep my vote a secret and cast it in the ballot box. I am keen to ensure that I place the ballot paper in a ballot box with corresponding/ similar colour.
+Then I go to the polling clerk who will mark my left small finger with indelible ink. I have just voted! I collect my ID/Passport and leave the polling station.</string>
+
+    <string name="valid_ballot_text">Look at examples of valid ballot papers</string>
+    <string name="reject_ballot_text">Look at examples of rejected ballot papers</string>
+    <string name="reject_ballot_button">Rejected Ballot Papers</string>
+    <string name="valid_ballot_button">Valid Ballot Papers</string>
+    <string name="valid_ballot_example">Examples of valid ballot papers</string>
+    <string name="reject_ballot_example">Examples of rejected ballot papers</string>
+
     <string name="send_vote_invite">Remind your friends to vote by sending them an invite</string>
     <string name="action_deep_link">
         com.google.android.gms.samples.appinvite.DEEP_LINK_ACTION
@@ -147,7 +168,7 @@ m) Attempts to vote more than once.\n\n n) Interference with a voter in casting 
     <string name="invite_dialog_title">You got an invitation!</string>
 
     <string name="google_play_services_error">Google Play Services Error</string>
-    <string name="title_activity_show_reports">ShowReports</string>
+    <string name="title_activity_show_reports">Show Reports</string>
 
     <string name="report_violation">Report an election offence to the authorities</string>
     <string name="search_polling_text">Search for a Polling Station or Registration Centre</string>

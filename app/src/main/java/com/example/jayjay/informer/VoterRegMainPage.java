@@ -143,7 +143,8 @@ public class VoterRegMainPage extends AppCompatActivity implements
                 // TODO Auto-generated method stub
                 Intent i = new Intent(VoterRegMainPage.this, VoterRegSlider.class);
                 startActivity(i);
-                speechVoterRegButton.setEnabled(false);
+                onPause();
+                //speechVoterRegButton.setEnabled(false);
             }
         });
 
@@ -199,5 +200,13 @@ public class VoterRegMainPage extends AppCompatActivity implements
         String text = voterRegContent.getText().toString();
 
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+    }
+
+    public void onPause() {
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onPause();
     }
 }

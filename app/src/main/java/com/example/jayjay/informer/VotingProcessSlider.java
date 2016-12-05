@@ -5,12 +5,14 @@ package com.example.jayjay.informer;
  */
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -22,6 +24,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.client.Firebase;
@@ -102,7 +105,7 @@ public class VotingProcessSlider extends AppCompatActivity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchVoterRegMainPage();
+                launchVotingProcessMainPage();
             }
         });
 
@@ -116,7 +119,7 @@ public class VotingProcessSlider extends AppCompatActivity {
                     // move to next screen
                     viewPager.setCurrentItem(current);
                 } else {
-                    launchVoterRegMainPage();
+                    launchVotingProcessMainPage();
                 }
             }
         });
@@ -145,9 +148,15 @@ public class VotingProcessSlider extends AppCompatActivity {
         return viewPager.getCurrentItem() + i;
     }
 
-    private void launchVoterRegMainPage() {
+    private void launchVotingProcessMainPage() {
         //prefManager.setFirstTimeLaunch(false);
         startActivity(new Intent(VotingProcessSlider.this, VotingMainPage.class));
+        finish();
+    }
+
+    private void launchVoterEducationChannelPage() {
+        //prefManager.setFirstTimeLaunch(false);
+        startActivity(new Intent(VotingProcessSlider.this, VoterEducation.class));
         finish();
     }
 
@@ -155,19 +164,60 @@ public class VotingProcessSlider extends AppCompatActivity {
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
-        public void onPageSelected(int position) {
+        public void onPageSelected(final int position) {
             addBottomDots(position);
 
             // changing the next button text 'NEXT' / 'GOT IT'
             if (position == layouts.length - 1) {
                 // last page. make button text to GOT IT
                 btnNext.setText(getString(R.string.start));
-                btnSkip.setVisibility(View.GONE);
+                open();
+                btnSkip.setText("BACK");
+                btnSkip.setVisibility(View.VISIBLE);
+                btnSkip.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // checking for last page
+                        // if last page home screen will be launched
+                        int current = getItem(-1);
+                        if (current < layouts.length) {
+                            // move to previous screen
+                            viewPager.setCurrentItem(current);
+                        } else {
+                            launchVotingProcessMainPage();
+                        }
+                    }
+                });
             } else {
                 // still pages are left
                 btnNext.setText(getString(R.string.next));
                 btnSkip.setVisibility(View.VISIBLE);
             }
+        }
+
+        public void open() {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(VotingProcessSlider.this);
+            alertDialogBuilder.setMessage("Have you understood the Voting Process?\n\n Click Yes if you have\n Click No if you want to go through the content again");
+            alertDialogBuilder.setPositiveButton("Yes",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            Toast.makeText(VotingProcessSlider.this, "Well Done!", Toast.LENGTH_LONG).show();
+                            launchVoterEducationChannelPage();
+                        }
+                    });
+
+            alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(VotingProcessSlider.this, "Restarted the content", Toast.LENGTH_LONG).show();
+                    finish();
+                    launchVotingProcessMainPage();
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
         }
 
         @Override

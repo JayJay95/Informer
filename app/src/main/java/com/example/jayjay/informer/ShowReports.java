@@ -1,5 +1,6 @@
 package com.example.jayjay.informer;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,9 +8,14 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.firebase.ui.database.FirebaseListAdapter;
@@ -27,6 +33,11 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.R.id.list;
 
 public class ShowReports extends AppCompatActivity {
 
@@ -130,9 +141,13 @@ public class ShowReports extends AppCompatActivity {
                     }
                 })
                 .build();
-
+//        ProgressDialog pd = new ProgressDialog(ShowReports.this);
+//        pd.setTitle("Loading...");
+//        pd.setMessage("Please wait.");
+//        pd.setCancelable(false);
+//        pd.show();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("ReportPOJO");
-
+//
         ListView reportlist = (ListView) findViewById(R.id.report_list_view);
 
         //Initialize listAdapter and set properties such as model class, food layout and reference to the realtime database
@@ -149,13 +164,20 @@ public class ShowReports extends AppCompatActivity {
                 TextView description = (TextView) v.findViewById(R.id.reportcard_description);
                 TextView perpetrator = (TextView) v.findViewById(R.id.reportcard_perpetrator);
 
-                firstname.setText(model.getFirstName());
-                lastname.setText(model.getLastName());
+                firstname.setText(model.getFirstName().toUpperCase());
+                lastname.setText(model.getLastName().toUpperCase());
+                firstname.append(" " + lastname.getText());
+                lastname.setVisibility(View.INVISIBLE);
+
                 county.setText(model.getCounty());
                 constituency.setText(model.getConstituency());
+                constituency.setVisibility(View.INVISIBLE);
                 ward.setText(model.getWard());
+                ward.append(", " + constituency.getText() + "\n");
                 pollingstation.setText(model.getPollingStation());
+                pollingstation.append("\n");
                 description.setText(model.getDescription());
+                description.append("\n");
                 perpetrator.setText(model.getPerpetrator());
             }
 
@@ -168,6 +190,18 @@ public class ShowReports extends AppCompatActivity {
         };
 
         reportlist.setAdapter(listAdapter);
+        //pd.dismiss();
+
+//        reportlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, final View view,
+//                                    int position, long id) {
+//                final List item = (reportlist) parent.getItemAtPosition(position);
+//                Toast.makeText(ShowReports.this, item + " selected", Toast.LENGTH_LONG).show();
+//            }
+//
+//        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

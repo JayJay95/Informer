@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -40,8 +42,12 @@ public class SearchPollingStation extends AppCompatActivity implements AdapterVi
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private Spinner countyspinner;
+    private Spinner constituencyspinner;
+    private Spinner wardspinner;
     private ArrayAdapter<Stations> countyNamesAdapter;
     private final List<Stations> county_object = new ArrayList<Stations>();
+    private AutoCompleteTextView actv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,6 +171,87 @@ public class SearchPollingStation extends AppCompatActivity implements AdapterVi
 
 
         });
+
+        databaseReference.child("pollingStationsData").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                final List<String> constituency_name = new ArrayList<String>();
+
+                for (DataSnapshot constituencySnapshot : dataSnapshot.getChildren()) {
+                    String constituencyName = constituencySnapshot.child("constituency_name").getValue(String.class);
+                    constituency_name.add(constituencyName);
+                }
+                constituencyspinner = (Spinner) findViewById(R.id.constituency_spinner);
+                constituencyspinner.setOnItemSelectedListener(SearchPollingStation.this);
+                ArrayAdapter<String> constituencyNamesAdapter = new ArrayAdapter<String>(SearchPollingStation.this, android.R.layout.simple_spinner_item, constituency_name);
+                constituencyNamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                constituencyspinner.setAdapter(constituencyNamesAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+
+        });
+
+        databaseReference.child("pollingStationsData").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                final List<String> caw_name = new ArrayList<String>();
+
+                for (DataSnapshot cawSnapshot : dataSnapshot.getChildren()) {
+
+                    String cawName = cawSnapshot.child("caw_name").getValue(String.class);
+                    caw_name.add(cawName);
+                }
+                wardspinner = (Spinner) findViewById(R.id.caw_spinner);
+                wardspinner.setOnItemSelectedListener(SearchPollingStation.this);
+                ArrayAdapter<String> cawNamesAdapter = new ArrayAdapter<String>(SearchPollingStation.this, android.R.layout.simple_spinner_item, caw_name);
+                cawNamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                wardspinner.setAdapter(cawNamesAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+
+        });
+
+//        //Child the root before all the push() keys are found and add a ValueEventListener()
+//        databaseReference.child("pollingStationsData").orderByChild("county_name").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                final List<String> county_name = new ArrayList<String>();
+//
+//                //Basically, this says "For each DataSnapshot *Data* in dataSnapshot, do what's inside the method.
+//                for (DataSnapshot suggestionSnapshot : dataSnapshot.getChildren()){
+//                    //Get the suggestion by childing the key of the string you want to get.
+////                    String countyName = suggestionSnapshot.child("county_name").getValue(String.class);
+//////                    //Add the retrieved string to the list
+////                    county_name.add(countyName);
+//                    Stations countySnap = suggestionSnapshot.getValue(Stations.class);
+//                    county_name.add(countySnap.getCounty_name());
+//                    county_object.add(countySnap);
+//
+//                }
+//                Log.e("TAG", "county_objects size: " + county_object.size());
+//                actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView1);
+//                ArrayAdapter<String> autoComplete = new ArrayAdapter<String>(SearchPollingStation.this,android.R.layout.simple_list_item_1, county_name);
+//                actv.setThreshold(3);
+//                actv.setAdapter(autoComplete);
+//            }
+
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 
     @Override

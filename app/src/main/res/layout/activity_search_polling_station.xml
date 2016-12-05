@@ -59,23 +59,60 @@
         android:hint="Choose a county"
         android:layout_marginTop="10dp" />
 
-    <TextView
-        android:id="@+id/constituency_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/county_spinner"
-        android:layout_marginTop="25dp"
-        android:textColor="@color/action_bar"
-        android:text="@string/constituency_text"
-        android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/constituency_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/county_spinner"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/action_bar"
+            android:text="@string/constituency_text"
+            android:textStyle="bold" />
 
         <Spinner
-        android:id="@+id/constituency_spinner"
-        android:layout_below="@+id/constituency_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Select a county first"
-        android:layout_marginTop="10dp" />
+            android:id="@+id/constituency_spinner"
+            android:layout_below="@+id/constituency_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select a county first"
+            android:layout_marginTop="10dp" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/caw_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/constituency_spinner"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/action_bar"
+            android:text="County assembly ward"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/caw_spinner"
+            android:layout_below="@+id/caw_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select a ward"
+            android:layout_marginTop="10dp" />
+
+
+    </RelativeLayout>
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!--<AutoCompleteTextView-->
+    <!--android:id="@+id/autoCompleteTextView1"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:ems="10"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:layout_marginRight="57dp"-->
+    <!--android:layout_marginEnd="57dp"-->
+    <!--android:layout_marginBottom="159dp" />-->
+    <!--</RelativeLayout>-->
 </android.support.design.widget.CoordinatorLayout>

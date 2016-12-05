@@ -140,7 +140,8 @@ public class VotingMainPage extends AppCompatActivity implements
                 // TODO Auto-generated method stub
                 Intent i = new Intent(VotingMainPage.this, VotingProcessSlider.class);
                 startActivity(i);
-                speechVotingButton.setEnabled(false);
+                //speechVotingButton.setEnabled(false);
+                onPause();
             }
         });
 
@@ -196,5 +197,13 @@ public class VotingMainPage extends AppCompatActivity implements
         String text = votingContent.getText().toString();
 
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+    }
+
+    public void onPause() {
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onPause();
     }
 }
