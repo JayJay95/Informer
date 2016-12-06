@@ -2,17 +2,24 @@ package com.example.jayjay.informer;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,17 +43,27 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SearchPollingStation extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
+    private DatabaseReference spinnerReference, countyReference;
     private Spinner countyspinner;
     private Spinner constituencyspinner;
     private Spinner wardspinner;
     private ArrayAdapter<Stations> countyNamesAdapter;
     private final List<Stations> county_object = new ArrayList<Stations>();
     private AutoCompleteTextView actv;
+    private String countyChosen, constituencyChosen, wardChosen;
+    private FirebaseListAdapter listAdapter;
+    private ListView psList;
+    RecyclerView psRecyclerView;
+    private final ArrayList<Stations> ps = new ArrayList<>();
 
 
     @Override
@@ -56,6 +73,13 @@ public class SearchPollingStation extends AppCompatActivity implements AdapterVi
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+//        psList = (ListView) findViewById(R.id.stations_list_view);
+        psRecyclerView = (RecyclerView) findViewById(R.id.stations_recycler_view);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        psRecyclerView.setLayoutManager(mLayoutManager);
+        psRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() == null) {
@@ -157,105 +181,135 @@ public class SearchPollingStation extends AppCompatActivity implements AdapterVi
                     String countyName = countySnapshot.child("county_name").getValue(String.class);
                     county_name.add(countyName);
                 }
+                Set<String> countyset = new HashSet<String>(county_name);
+                List<String> countynewlist = new ArrayList<String>(countyset);
+                Collections.sort(countynewlist);
                 countyspinner = (Spinner) findViewById(R.id.county_spinner);
                 countyspinner.setOnItemSelectedListener(SearchPollingStation.this);
-                ArrayAdapter<String> countyNamesAdapter = new ArrayAdapter<String>(SearchPollingStation.this, android.R.layout.simple_spinner_item, county_name);
+                ArrayAdapter<String> countyNamesAdapter = new ArrayAdapter<String>(SearchPollingStation.this, android.R.layout.simple_spinner_item, countynewlist);
                 countyNamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 countyspinner.setAdapter(countyNamesAdapter);
 
             }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-
-
-        });
-
-        databaseReference.child("pollingStationsData").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                final List<String> constituency_name = new ArrayList<String>();
-
-                for (DataSnapshot constituencySnapshot : dataSnapshot.getChildren()) {
-                    String constituencyName = constituencySnapshot.child("constituency_name").getValue(String.class);
-                    constituency_name.add(constituencyName);
-                }
-                constituencyspinner = (Spinner) findViewById(R.id.constituency_spinner);
-                constituencyspinner.setOnItemSelectedListener(SearchPollingStation.this);
-                ArrayAdapter<String> constituencyNamesAdapter = new ArrayAdapter<String>(SearchPollingStation.this, android.R.layout.simple_spinner_item, constituency_name);
-                constituencyNamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                constituencyspinner.setAdapter(constituencyNamesAdapter);
-
-            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
 
-
         });
 
-        databaseReference.child("pollingStationsData").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                final List<String> caw_name = new ArrayList<String>();
-
-                for (DataSnapshot cawSnapshot : dataSnapshot.getChildren()) {
-
-                    String cawName = cawSnapshot.child("caw_name").getValue(String.class);
-                    caw_name.add(cawName);
-                }
-                wardspinner = (Spinner) findViewById(R.id.caw_spinner);
-                wardspinner.setOnItemSelectedListener(SearchPollingStation.this);
-                ArrayAdapter<String> cawNamesAdapter = new ArrayAdapter<String>(SearchPollingStation.this, android.R.layout.simple_spinner_item, caw_name);
-                cawNamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                wardspinner.setAdapter(cawNamesAdapter);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-
-
-        });
-
-//        //Child the root before all the push() keys are found and add a ValueEventListener()
-//        databaseReference.child("pollingStationsData").orderByChild("county_name").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                final List<String> county_name = new ArrayList<String>();
-//
-//                //Basically, this says "For each DataSnapshot *Data* in dataSnapshot, do what's inside the method.
-//                for (DataSnapshot suggestionSnapshot : dataSnapshot.getChildren()){
-//                    //Get the suggestion by childing the key of the string you want to get.
-////                    String countyName = suggestionSnapshot.child("county_name").getValue(String.class);
-//////                    //Add the retrieved string to the list
-////                    county_name.add(countyName);
-//                    Stations countySnap = suggestionSnapshot.getValue(Stations.class);
-//                    county_name.add(countySnap.getCounty_name());
-//                    county_object.add(countySnap);
-//
-//                }
-//                Log.e("TAG", "county_objects size: " + county_object.size());
-//                actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView1);
-//                ArrayAdapter<String> autoComplete = new ArrayAdapter<String>(SearchPollingStation.this,android.R.layout.simple_list_item_1, county_name);
-//                actv.setThreshold(3);
-//                actv.setAdapter(autoComplete);
-//            }
-
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+    public void onItemSelected(AdapterView<?> adapterView, View view, final int i, long l) {
+        final ArrayList<Stations> ps = new ArrayList<>();
+        int id = adapterView.getId();
+        switch (id) {
+            case R.id.county_spinner:
+                ps.clear();
+                final String countySelectedItem = countyspinner.getItemAtPosition(countyspinner.getSelectedItemPosition()).toString();
+                countyChosen = countySelectedItem;
+                Log.e("TAG2", "" + countyChosen);
+                Log.e("TAG", "County: " + countySelectedItem);
+
+                databaseReference.child("pollingStationsData").orderByChild("county_name").equalTo(countyChosen).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        final List<String> constituency_name = new ArrayList<String>();
+
+                        for (DataSnapshot constituencySnapshot : dataSnapshot.getChildren()) {
+                            String constituencyName = constituencySnapshot.child("constituency_name").getValue(String.class);
+                            constituency_name.add(constituencyName);
+                        }
+                        Set<String> constituencyset = new HashSet<String>(constituency_name);
+                        List<String> constituencynewlist = new ArrayList<String>(constituencyset);
+                        Collections.sort(constituencynewlist);
+                        constituencyspinner = (Spinner) findViewById(R.id.constituency_spinner);
+                        constituencyspinner.setOnItemSelectedListener(SearchPollingStation.this);
+                        ArrayAdapter<String> constituencyNamesAdapter = new ArrayAdapter<String>(SearchPollingStation.this, android.R.layout.simple_spinner_item, constituencynewlist);
+                        constituencyNamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        constituencyspinner.setAdapter(constituencyNamesAdapter);
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+
+                });
+
+                break;
+            case R.id.constituency_spinner:
+                ps.clear();
+                final String constituencySelectedItem = constituencyspinner.getItemAtPosition(constituencyspinner.getSelectedItemPosition()).toString();
+                constituencyChosen = constituencySelectedItem;
+                Log.e("TAG", "Constituency: " + constituencySelectedItem);
+                databaseReference.child("pollingStationsData").orderByChild("constituency_name").equalTo(constituencyChosen).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        final List<String> caw_name = new ArrayList<String>();
+
+                        for (DataSnapshot cawSnapshot : dataSnapshot.getChildren()) {
+
+                            String cawName = cawSnapshot.child("caw_name").getValue(String.class);
+                            caw_name.add(cawName);
+                        }
+                        Set<String> wardset = new HashSet<String>(caw_name);
+                        List<String> wardnewlist = new ArrayList<String>(wardset);
+                        Collections.sort(wardnewlist);
+                        wardspinner = (Spinner) findViewById(R.id.caw_spinner);
+                        wardspinner.setOnItemSelectedListener(SearchPollingStation.this);
+                        ArrayAdapter<String> cawNamesAdapter = new ArrayAdapter<String>(SearchPollingStation.this, android.R.layout.simple_spinner_item, wardnewlist);
+                        cawNamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        wardspinner.setAdapter(cawNamesAdapter);
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+                break;
+
+            case R.id.caw_spinner:
+                final List<Stations> county_object = new ArrayList<Stations>();
+                final String wardSelectedItem = wardspinner.getItemAtPosition(wardspinner.getSelectedItemPosition()).toString();
+                wardChosen = wardSelectedItem;
+                Log.e("TAG", "Ward: " + wardSelectedItem);
+
+                spinnerReference = FirebaseDatabase.getInstance().getReference().child("pollingStationsData");
+
+                spinnerReference.orderByChild("caw_name").equalTo(wardChosen).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        for (DataSnapshot countySnapshot : dataSnapshot.getChildren()) {
+                            final ArrayList<Stations> ps = new ArrayList<>();
+                            Stations countySnap = countySnapshot.getValue(Stations.class);
+                            county_object.add(countySnap);
+                            Log.e("TAG", "Polling Stations:" + countySnap.getPolling_station_name());
+                            for (Stations pollingStations : county_object) {
+                                ps.add(pollingStations);
+                            }
+                            PollingStationsAdapter psAdapter = new PollingStationsAdapter(SearchPollingStation.this, ps);
+                            psRecyclerView.setAdapter(psAdapter);
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+
+                });
+                break;
+        }
+
         Snackbar.make(view, "Clicked " + adapterView.getItemAtPosition(i).toString(), Snackbar.LENGTH_LONG).show();
     }
 
