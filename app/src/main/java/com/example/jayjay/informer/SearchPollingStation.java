@@ -76,9 +76,6 @@ public class SearchPollingStation extends AppCompatActivity implements AdapterVi
 
 //        psList = (ListView) findViewById(R.id.stations_list_view);
         psRecyclerView = (RecyclerView) findViewById(R.id.stations_recycler_view);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        psRecyclerView.setLayoutManager(mLayoutManager);
-        psRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -104,7 +101,7 @@ public class SearchPollingStation extends AppCompatActivity implements AdapterVi
         // Create the AccountHeader
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
-                .withHeaderBackground(R.drawable.header)
+                .withHeaderBackground(R.drawable.myheader)
                 .addProfiles(
                         new ProfileDrawerItem().withName(firebaseAuth.getCurrentUser().getDisplayName()).withEmail(firebaseAuth.getCurrentUser().getEmail()).withIcon((R.drawable.profile))
                 )
@@ -311,6 +308,10 @@ public class SearchPollingStation extends AppCompatActivity implements AdapterVi
         }
 
         Snackbar.make(view, "Clicked " + adapterView.getItemAtPosition(i).toString(), Snackbar.LENGTH_LONG).show();
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        psRecyclerView.setLayoutManager(mLayoutManager);
+        psRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
     }
 
     @Override

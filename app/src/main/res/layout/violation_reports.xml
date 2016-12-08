@@ -46,9 +46,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/report_violation_text"
                 android:text="@string/report_violation"
-                android:textSize="18dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_marginBottom="20dp"
                 android:textColor="@color/action_bar"
+                android:layout_gravity="center"
                 android:textStyle="bold" />
 
             <TextView

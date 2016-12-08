@@ -52,9 +52,11 @@ public class PollingStationsAdapter extends RecyclerView.Adapter<PollingStations
 
     public class PollingStationsHolder extends RecyclerView.ViewHolder {
         public TextView pollingStationNames;
+        public TextView psTitle;
 
         public PollingStationsHolder(View itemView) {
             super(itemView);
+            psTitle = (TextView) itemView.findViewById(R.id.ps_title);
             pollingStationNames = (TextView) itemView.findViewById(R.id.pollingstation_name);
         }
     }

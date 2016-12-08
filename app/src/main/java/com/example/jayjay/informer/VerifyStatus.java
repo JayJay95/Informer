@@ -1,15 +1,23 @@
 package com.example.jayjay.informer;
 
+import android.Manifest;
+import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.telephony.SmsManager;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,20 +34,20 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
-import static android.R.id.toggle;
-
-public class HomeActivity extends AppCompatActivity {
+public class VerifyStatus extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
-    private FirebaseAuth mFirebaseAuth;
-    private FirebaseUser mFirebaseUser;
-    ActionBarDrawerToggle toggle;
-    private static final int RC_SIGN_IN = 0;
     private Button goToRegVerificationbutton;
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 14;
+    Button sendBtn;
+    EditText txtMessage;
+    Integer iebcNumber = 22464;
+    String phoneNo;
+    String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_verify_status);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -47,14 +55,7 @@ public class HomeActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() == null) {
             finish();
-            //startActivity(new Intent(this, LogInActivity.class));
-            startActivityForResult(AuthUI.getInstance()
-                    .createSignInIntentBuilder()
-                    .setProviders(
-                            AuthUI.FACEBOOK_PROVIDER,
-                            AuthUI.EMAIL_PROVIDER,
-                            AuthUI.GOOGLE_PROVIDER)
-                    .build(), RC_SIGN_IN);
+            startActivity(new Intent(this, LogInActivity.class));
         } else {
             Log.e("TAG", "User ID: " + firebaseAuth.getCurrentUser().getUid());
             PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.drawer_item_home).withIcon(getResources().getDrawable(R.drawable.ic_home_black_24dp));
@@ -108,34 +109,34 @@ public class HomeActivity extends AppCompatActivity {
                             if (drawerItem != null) {
                                 Intent intent = null;
                                 if (drawerItem.getIdentifier() == 1) {
-                                    intent = new Intent(HomeActivity.this, HomeActivity.class);
+                                    intent = new Intent(VerifyStatus.this, HomeActivity.class);
                                 }
                                 if (drawerItem.getIdentifier() == 2) {
-                                    intent = new Intent(HomeActivity.this, VoterEducation.class);
+                                    intent = new Intent(VerifyStatus.this, VoterEducation.class);
                                 }
                                 if (drawerItem.getIdentifier() == 3) {
-                                    intent = new Intent(HomeActivity.this, SearchPollingStation.class);
+                                    intent = new Intent(VerifyStatus.this, SearchPollingStation.class);
                                 }
                                 if (drawerItem.getIdentifier() == 4) {
-                                    intent = new Intent(HomeActivity.this, FaqList.class);
+                                    intent = new Intent(VerifyStatus.this, FaqList.class);
                                 }
                                 if (drawerItem.getIdentifier() == 5) {
-                                    intent = new Intent(HomeActivity.this, ViolationReports.class);
+                                    intent = new Intent(VerifyStatus.this, ViolationReports.class);
                                 }
                                 if (drawerItem.getIdentifier() == 6) {
-                                    intent = new Intent(HomeActivity.this, CountDown.class);
+                                    intent = new Intent(VerifyStatus.this, CountDown.class);
                                 }
                                 if (drawerItem.getIdentifier() == 7) {
-                                    intent = new Intent(HomeActivity.this, Alerts.class);
+                                    intent = new Intent(VerifyStatus.this, Alerts.class);
                                 }
                                 if (drawerItem.getIdentifier() == 8) {
-                                    intent = new Intent(HomeActivity.this, VoteInvite.class);
+                                    intent = new Intent(VerifyStatus.this, VoteInvite.class);
                                 }
                                 if (drawerItem.getIdentifier() == 9) {
-                                    intent = new Intent(HomeActivity.this, PollingStations.class);
+                                    intent = new Intent(VerifyStatus.this, PollingStations.class);
                                 }
                                 if (intent != null) {
-                                    HomeActivity.this.startActivity(intent);
+                                    VerifyStatus.this.startActivity(intent);
                                 }
                             }
                             return false;
@@ -155,60 +156,103 @@ public class HomeActivity extends AppCompatActivity {
             RateThisApp.Config config = new RateThisApp.Config(3, 5);
             RateThisApp.init(config);
 
-            goToRegVerificationbutton = (Button) findViewById(R.id.voterregbutton);
-            goToRegVerificationbutton.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
-                    // TODO Auto-generated method stub
-                    Intent i = new Intent(HomeActivity.this, VerifyStatus.class);
-                    startActivity(i);
+            sendBtn = (Button) findViewById(R.id.btnSendSMS);
+            txtMessage = (EditText) findViewById(R.id.editTextmsg);
+
+            sendBtn.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    //sendSMSMessage();
+                    if (txtMessage.length() > 0) {
+
+                        sendSMSMessage();
+
+                    } else {
+                        Toast.makeText(getBaseContext(),
+                                "Please enter your ID Number",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 }
+
             });
-        }
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        // Monitor launch times and interval from installation
-        RateThisApp.onStart(this);
-        // If the criteria is satisfied, "Rate this app" dialog will be shown
-        RateThisApp.showRateDialogIfNeeded(this);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+//        protected void alertMessage() {
+//            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+//                public void onClick(DialogInterface dialog, int which) {
+//                    switch (which) {
+//                        case DialogInterface.BUTTON_POSITIVE:
+//                            // Yes button clicked
+//                            Toast.makeText(VerifyStatus.this, "Yes Clicked",
+//                                    Toast.LENGTH_LONG).show();
+//                            break;
 //
-        //noinspection SimplifiableIfStatement
+//                        case DialogInterface.BUTTON_NEGATIVE:
+//                            // No button clicked
+//                            // do nothing
+//                            Toast.makeText(VerifyStatus.this, "No Clicked",
+//                                    Toast.LENGTH_LONG).show();
+//                            break;
+//                    }
+//                }
+//            };
+//
+//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//            builder.setMessage("Are you sure?")
+//                    .setPositiveButton("Yes", dialogClickListener)
+//                    .setNegativeButton("No", dialogClickListener).show();
+//        }
 
-        if (id == R.id.action_logout) {
-            firebaseAuth.signOut();
-            loadLogInView();
+
         }
-//        if (toggle.onOptionsItemSelected(item))
-//            return true;
-
-        return super.onOptionsItemSelected(item);
     }
 
-    private void loadLogInView() {
-        Intent intent = new Intent(this, LogInActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+    protected void sendSMSMessage() {
+        phoneNo = iebcNumber.toString();
+        message = txtMessage.getText().toString();
+        Log.e("TAG1", "mY mESSAGE: " + message);
+        Log.e("TAG2", "mY no: " + phoneNo);
+
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            Log.e("TAG4", "check self permission: " + Manifest.permission.SEND_SMS);
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.SEND_SMS)) {
+                Log.e("TAG5", "rationale: " + Manifest.permission.SEND_SMS);
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.SEND_SMS},
+                        MY_PERMISSIONS_REQUEST_SEND_SMS);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_SEND_SMS: {
+                Log.e("TAG6", "MY_PERMISSIONS_REQUEST_SEND_SMS: " + MY_PERMISSIONS_REQUEST_SEND_SMS);
+                Log.e("TAG6", "grantresults: " + grantResults.toString());
+
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    PendingIntent pi = PendingIntent.getActivity(this, 0,
+                            new Intent(this, VerifyStatus.class), 0);
+                    SmsManager smsManager = SmsManager.getDefault();
+//                    PendingIntent pi = PendingIntent.getActivity(this, 0,
+//                            new Intent(this, VerifyStatus.class), 0);
+                    smsManager.sendTextMessage(phoneNo, null, message, pi, null);
+                    Log.e("TAG3", "mY no: " + message);
+                    Toast.makeText(getApplicationContext(), "SMS sent.",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "SMS failed, please try again.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        }
+
     }
 }

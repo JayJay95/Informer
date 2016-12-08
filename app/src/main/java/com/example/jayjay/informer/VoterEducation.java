@@ -13,6 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.jayjay.informer.app.AppController;
+
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+import com.example.jayjay.informer.app.AppController;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -36,6 +41,18 @@ public class VoterEducation extends AppCompatActivity {
     Button goToElectionOffencesbutton;
     Button goToBallotMarkingbutton;
     private FirebaseAuth firebaseAuth;
+    private NetworkImageView mNetworkImageView;
+    private ImageLoader mImageLoader;
+    private NetworkImageView votingprocessNetworkImageView;
+    private ImageLoader votingprocessImageLoader;
+    private NetworkImageView ballotmarkingNetworkImageView;
+    private ImageLoader ballotmarkingImageLoader;
+    private NetworkImageView voterrightsgNetworkImageView;
+    private ImageLoader voterrightsImageLoader;
+    private NetworkImageView voterdutiesNetworkImageView;
+    private ImageLoader voterdutiesImageLoader;
+    private NetworkImageView electionoffencesNetworkImageView;
+    private ImageLoader electionoffencesImageLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +85,7 @@ public class VoterEducation extends AppCompatActivity {
         // Create the AccountHeader
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
-                .withHeaderBackground(R.drawable.header)
+                .withHeaderBackground(R.drawable.myheader)
                 .addProfiles(
                         new ProfileDrawerItem().withName(firebaseAuth.getCurrentUser().getDisplayName()).withEmail(firebaseAuth.getCurrentUser().getEmail()).withIcon((R.drawable.profile))
                 )
@@ -135,6 +152,20 @@ public class VoterEducation extends AppCompatActivity {
                 })
                 .build();
 
+        mNetworkImageView = (NetworkImageView) findViewById(R.id
+                .vrthumbnail);
+        votingprocessNetworkImageView = (NetworkImageView) findViewById(R.id
+                .votingprocessthumbnail);
+        ballotmarkingNetworkImageView = (NetworkImageView) findViewById(R.id
+                .ballotmarkingthumbnail);
+        voterrightsgNetworkImageView = (NetworkImageView) findViewById(R.id
+                .voterrightsthumbnail);
+        voterdutiesNetworkImageView = (NetworkImageView) findViewById(R.id
+                .voterdutiesthumbnail);
+        electionoffencesNetworkImageView = (NetworkImageView) findViewById(R.id
+                .electionoffencesthumbnail);
+
+
         goToVoterRegbutton = (Button) findViewById(R.id.voterregbutton);
         goToVoterRegbutton.setOnClickListener(new View.OnClickListener() {
 
@@ -196,6 +227,67 @@ public class VoterEducation extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Instantiate the RequestQueue.
+        mImageLoader = CustomVolleyRequestQueue.getInstance(this.getApplicationContext())
+                .getImageLoader();
+        //Image URL - This can point to any image file supported by Android
+        final String url = "http://www.iebc.or.ke/images/gallery/voterreg2016/Voter%20Registration%20%20(12).JPG";
+        mImageLoader.get(url, ImageLoader.getImageListener(mNetworkImageView,
+                R.mipmap.defaultimage, android.R.drawable
+                        .ic_dialog_alert));
+        mNetworkImageView.setImageUrl(url, mImageLoader);
+
+        votingprocessImageLoader = CustomVolleyRequestQueue.getInstance(this.getApplicationContext())
+                .getImageLoader();
+        //Image URL - This can point to any image file supported by Android
+        final String votingprocessurl = "http://www.iebc.or.ke/images/gallery/KabeteandOlooluaBy-election/Kabete%20and%20Oloolua%20By-election%20(22).JPG";
+        votingprocessImageLoader.get(votingprocessurl, ImageLoader.getImageListener(votingprocessNetworkImageView,
+                R.mipmap.defaultimage, android.R.drawable
+                        .ic_dialog_alert));
+        votingprocessNetworkImageView.setImageUrl(votingprocessurl, votingprocessImageLoader);
+
+        ballotmarkingImageLoader = CustomVolleyRequestQueue.getInstance(this.getApplicationContext())
+                .getImageLoader();
+        //Image URL - This can point to any image file supported by Android
+        final String ballotmarkingurl = "http://www.iebc.or.ke/images/gallery/KabeteandOlooluaBy-election/Kabete%20and%20Oloolua%20By-election%20(5).JPG";
+        ballotmarkingImageLoader.get(ballotmarkingurl, ImageLoader.getImageListener(ballotmarkingNetworkImageView,
+                R.mipmap.defaultimage, android.R.drawable
+                        .ic_dialog_alert));
+        ballotmarkingNetworkImageView.setImageUrl(ballotmarkingurl, ballotmarkingImageLoader);
+
+        voterrightsImageLoader = CustomVolleyRequestQueue.getInstance(this.getApplicationContext())
+                .getImageLoader();
+        //Image URL - This can point to any image file supported by Android
+        final String voterrightssurl = "http://www.iebc.or.ke/images/gallery/KabeteandOlooluaBy-election/Kabete%20and%20Oloolua%20By-election%20(19).JPG";
+        voterrightsImageLoader.get(voterrightssurl, ImageLoader.getImageListener(voterrightsgNetworkImageView,
+                R.mipmap.defaultimage, android.R.drawable
+                        .ic_dialog_alert));
+        voterrightsgNetworkImageView.setImageUrl(voterrightssurl, voterrightsImageLoader);
+
+        voterdutiesImageLoader = CustomVolleyRequestQueue.getInstance(this.getApplicationContext())
+                .getImageLoader();
+        //Image URL - This can point to any image file supported by Android
+        final String voterdutiessurl = "http://www.iebc.or.ke/images/gallery/Masongaleni/Masongaleni%20and%20Nyagores%20MCA%20By-elections%20%20(18).JPG";
+        voterdutiesImageLoader.get(voterdutiessurl, ImageLoader.getImageListener(voterdutiesNetworkImageView,
+                R.mipmap.defaultimage, android.R.drawable
+                        .ic_dialog_alert));
+        voterdutiesNetworkImageView.setImageUrl(voterdutiessurl, voterdutiesImageLoader);
+
+        electionoffencesImageLoader = CustomVolleyRequestQueue.getInstance(this.getApplicationContext())
+                .getImageLoader();
+        //Image URL - This can point to any image file supported by Android
+        final String electionoffencesurl = "http://www.iebc.or.ke/images/gallery/KabeteandOlooluaBy-election/Kabete%20and%20Oloolua%20By-election%20(6).JPG";
+        electionoffencesImageLoader.get(electionoffencesurl, ImageLoader.getImageListener(electionoffencesNetworkImageView,
+                R.mipmap.defaultimage, android.R.drawable
+                        .ic_dialog_alert));
+        electionoffencesNetworkImageView.setImageUrl(electionoffencesurl, electionoffencesImageLoader);
+
+
     }
 
 

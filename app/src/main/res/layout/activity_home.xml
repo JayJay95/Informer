@@ -21,15 +21,81 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <RelativeLayout
-        android:id="@+id/activity_home"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
         android:layout_marginTop="?attr/actionBarSize">
 
-    </RelativeLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/vrcard_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="380dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/verifystatusthumbnail"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            android:layout_alignParentTop="true"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/iebc" />
+
+                        <TextView
+                            android:id="@+id/verifystatustitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/verifystatusthumbnail"
+                            android:maxLines="3"
+                            android:padding="8dp"
+                            android:text="Are you registered?"
+                            android:textColor="#222"
+                            android:textSize="22dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/voterregdescription"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/verifystatustitle"
+                            android:maxLines="3"
+                            android:padding="8dp"
+                            android:text="Verify your registration status"
+                            android:textColor="#666"
+                            android:textSize="14dp" />
+
+                        <Button
+                            android:id="@+id/voterregbutton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:minWidth="65dp"
+                            android:padding="8dp"
+                            android:layout_below="@+id/voterregdescription"
+                            android:background="@null"
+                            android:textColor="#00B0FF"
+                            android:text="CONFIRM" />
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
 </android.support.design.widget.CoordinatorLayout>

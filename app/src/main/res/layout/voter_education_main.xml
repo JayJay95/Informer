@@ -50,13 +50,20 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <!--<ImageView-->
+                    <!--android:id="@+id/vrthumbnail"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="250dp"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:scaleType="centerCrop"-->
+                    <!--android:src="@drawable/bvr_card" />-->
+
+                    <com.android.volley.toolbox.NetworkImageView
                         android:id="@+id/vrthumbnail"
                         android:layout_width="match_parent"
-                        android:layout_height="250dp"
                         android:layout_alignParentTop="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/bvr_card" />
+                        android:layout_height="250dp"
+                        android:scaleType="centerCrop" />
 
                     <TextView
                         android:id="@+id/vrtitle"
@@ -107,13 +114,20 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <!--<ImageView-->
+                    <!--android:id="@+id/votingprocessthumbnail"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="250dp"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:scaleType="centerCrop"-->
+                    <!--android:src="@drawable/votingprocess_card" />-->
+
+                    <com.android.volley.toolbox.NetworkImageView
                         android:id="@+id/votingprocessthumbnail"
                         android:layout_width="match_parent"
-                        android:layout_height="250dp"
                         android:layout_alignParentTop="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/votingprocess_card" />
+                        android:layout_height="250dp"
+                        android:scaleType="centerCrop" />
 
                     <TextView
                         android:id="@+id/votingprocesstitle"
@@ -163,13 +177,20 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <!--<ImageView-->
+                    <!--android:id="@+id/ballotmarkingthumbnail"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="250dp"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:scaleType="centerCrop"-->
+                    <!--android:src="@drawable/ballotmarking_card" />-->
+
+                    <com.android.volley.toolbox.NetworkImageView
                         android:id="@+id/ballotmarkingthumbnail"
                         android:layout_width="match_parent"
-                        android:layout_height="250dp"
                         android:layout_alignParentTop="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ballotmarking_card" />
+                        android:layout_height="250dp"
+                        android:scaleType="centerCrop" />
 
                     <TextView
                         android:id="@+id/ballotmarkingtitle"
@@ -220,13 +241,20 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <!--<ImageView-->
+                    <!--android:id="@+id/voterrightsthumbnail"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="250dp"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:scaleType="centerCrop"-->
+                    <!--android:src="@drawable/rights_card" />-->
+
+                    <com.android.volley.toolbox.NetworkImageView
                         android:id="@+id/voterrightsthumbnail"
                         android:layout_width="match_parent"
-                        android:layout_height="250dp"
                         android:layout_alignParentTop="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/rights_card" />
+                        android:layout_height="250dp"
+                        android:scaleType="centerCrop" />
 
                     <TextView
                         android:id="@+id/voterrightstitle"
@@ -276,13 +304,20 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <!--<ImageView-->
+                    <!--android:id="@+id/voterdutiesthumbnail"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="250dp"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:scaleType="centerCrop"-->
+                    <!--android:src="@drawable/duties_card" />-->
+
+                    <com.android.volley.toolbox.NetworkImageView
                         android:id="@+id/voterdutiesthumbnail"
                         android:layout_width="match_parent"
-                        android:layout_height="250dp"
                         android:layout_alignParentTop="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/duties_card" />
+                        android:layout_height="250dp"
+                        android:scaleType="centerCrop" />
 
                     <TextView
                         android:id="@+id/voterdutiestitle"
@@ -332,13 +367,20 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <!--<ImageView-->
+                    <!--android:id="@+id/electionoffencesthumbnail"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="250dp"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:scaleType="centerCrop"-->
+                    <!--android:src="@drawable/election_offences_card" />-->
+
+                    <com.android.volley.toolbox.NetworkImageView
                         android:id="@+id/electionoffencesthumbnail"
                         android:layout_width="match_parent"
-                        android:layout_height="250dp"
                         android:layout_alignParentTop="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/election_offences_card" />
+                        android:layout_height="250dp"
+                        android:scaleType="centerCrop" />
 
                     <TextView
                         android:id="@+id/electionoffencestitle"
