@@ -186,6 +186,9 @@
         <activity
             android:name=".VerifyStatus"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".PartiesActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

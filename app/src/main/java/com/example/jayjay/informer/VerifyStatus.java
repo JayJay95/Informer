@@ -1,19 +1,12 @@
 package com.example.jayjay.informer;
 
-import android.Manifest;
-import android.app.PendingIntent;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.telephony.SmsManager;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,7 +33,7 @@ public class VerifyStatus extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 14;
     Button sendBtn;
     EditText txtMessage;
-    Integer iebcNumber = 22464;
+    String iebcNumber = "22464";
     String phoneNo;
     String message;
 
@@ -157,13 +150,16 @@ public class VerifyStatus extends AppCompatActivity {
             RateThisApp.init(config);
 
 
+
             sendBtn = (Button) findViewById(R.id.btnSendSMS);
             txtMessage = (EditText) findViewById(R.id.editTextmsg);
-
             sendBtn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     //sendSMSMessage();
                     if (txtMessage.length() > 0) {
+
+
+                        //message = txtMessage.getText().toString();
 
                         sendSMSMessage();
 
@@ -176,83 +172,32 @@ public class VerifyStatus extends AppCompatActivity {
 
             });
 
-//        protected void alertMessage() {
-//            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-//                public void onClick(DialogInterface dialog, int which) {
-//                    switch (which) {
-//                        case DialogInterface.BUTTON_POSITIVE:
-//                            // Yes button clicked
-//                            Toast.makeText(VerifyStatus.this, "Yes Clicked",
-//                                    Toast.LENGTH_LONG).show();
-//                            break;
-//
-//                        case DialogInterface.BUTTON_NEGATIVE:
-//                            // No button clicked
-//                            // do nothing
-//                            Toast.makeText(VerifyStatus.this, "No Clicked",
-//                                    Toast.LENGTH_LONG).show();
-//                            break;
-//                    }
-//                }
-//            };
-//
-//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//            builder.setMessage("Are you sure?")
-//                    .setPositiveButton("Yes", dialogClickListener)
-//                    .setNegativeButton("No", dialogClickListener).show();
-//        }
-
-
         }
     }
 
     protected void sendSMSMessage() {
-        phoneNo = iebcNumber.toString();
-        message = txtMessage.getText().toString();
-        Log.e("TAG1", "mY mESSAGE: " + message);
-        Log.e("TAG2", "mY no: " + phoneNo);
+        Log.i("Send SMS", "");
+        Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+        sendIntent.setType("vnd.android-dir/mms-sms");
+        sendIntent.setData(Uri.parse("smsto:" + iebcNumber));
+        sendIntent.putExtra("sms_body", txtMessage.getText().toString());
+        Log.e("TAG40", "message body: " + txtMessage.getText().toString());
 
-
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.SEND_SMS)
-                != PackageManager.PERMISSION_GRANTED) {
-            Log.e("TAG4", "check self permission: " + Manifest.permission.SEND_SMS);
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.SEND_SMS)) {
-                Log.e("TAG5", "rationale: " + Manifest.permission.SEND_SMS);
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.SEND_SMS},
-                        MY_PERMISSIONS_REQUEST_SEND_SMS);
-            }
+        try {
+            startActivity(sendIntent);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(),
+                    "Voter Registration confirmation failed, please try again later!",
+                    Toast.LENGTH_LONG).show();
+            e.printStackTrace();
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_SEND_SMS: {
-                Log.e("TAG6", "MY_PERMISSIONS_REQUEST_SEND_SMS: " + MY_PERMISSIONS_REQUEST_SEND_SMS);
-                Log.e("TAG6", "grantresults: " + grantResults.toString());
-
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    PendingIntent pi = PendingIntent.getActivity(this, 0,
-                            new Intent(this, VerifyStatus.class), 0);
-                    SmsManager smsManager = SmsManager.getDefault();
-//                    PendingIntent pi = PendingIntent.getActivity(this, 0,
-//                            new Intent(this, VerifyStatus.class), 0);
-                    smsManager.sendTextMessage(phoneNo, null, message, pi, null);
-                    Log.e("TAG3", "mY no: " + message);
-                    Toast.makeText(getApplicationContext(), "SMS sent.",
-                            Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getApplicationContext(),
-                            "SMS failed, please try again.", Toast.LENGTH_LONG).show();
-                    return;
-                }
-            }
-        }
-
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
+
 }

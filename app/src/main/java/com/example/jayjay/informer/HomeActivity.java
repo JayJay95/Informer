@@ -68,6 +68,7 @@ public class HomeActivity extends AppCompatActivity {
             SecondaryDrawerItem item7 = new SecondaryDrawerItem().withIdentifier(7).withName(R.string.drawer_item_alerts).withIcon(getResources().getDrawable(R.drawable.ic_menu_share));
             SecondaryDrawerItem item8 = new SecondaryDrawerItem().withIdentifier(8).withName(R.string.drawer_item_invites).withIcon(getResources().getDrawable(R.drawable.ic_chat_black_24dp));
             SecondaryDrawerItem item9 = new SecondaryDrawerItem().withIdentifier(9).withName(R.string.myMap).withIcon(getResources().getDrawable(R.drawable.ic_polling_station));
+            SecondaryDrawerItem item10 = new SecondaryDrawerItem().withIdentifier(10).withName("Political Parties").withIcon(getResources().getDrawable(R.drawable.ic_menu_educate));
 
             // Create the AccountHeader
             AccountHeader headerResult = new AccountHeaderBuilder()
@@ -99,7 +100,8 @@ public class HomeActivity extends AppCompatActivity {
                             new DividerDrawerItem(),
                             item7,
                             item8,
-                            item9
+                            item9,
+                            item10
                     )
                     .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                         @Override
@@ -133,6 +135,9 @@ public class HomeActivity extends AppCompatActivity {
                                 }
                                 if (drawerItem.getIdentifier() == 9) {
                                     intent = new Intent(HomeActivity.this, PollingStations.class);
+                                }
+                                if (drawerItem.getIdentifier() == 10) {
+                                    intent = new Intent(HomeActivity.this, PartiesActivity.class);
                                 }
                                 if (intent != null) {
                                     HomeActivity.this.startActivity(intent);

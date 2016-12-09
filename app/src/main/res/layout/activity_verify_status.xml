@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/enterMsgtitle"
             android:padding="20dp"
+            android:layout_centerHorizontal="true"
             android:layout_margin="90dp"
             android:id="@+id/editTextmsg"
             android:textColorHint="@color/colorAccent"

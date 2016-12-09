@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.jayjay.informer.PartiesActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/activity_search_party"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/search_party"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/search_parties_text"
+            android:textColor="@color/action_bar"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+        <TextView
+            android:id="@+id/party_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/search_party"
+            android:layout_marginTop="25dp"
+            android:text="@string/party_text"
+            android:textColor="@color/action_bar"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/party_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/party_tv"
+            android:layout_marginTop="10dp"
+            android:hint="Choose a party" />
+
+
+        <TextView
+            android:id="@+id/partydetails_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/party_spinner"
+            android:layout_marginTop="25dp"
+            android:text="@string/party_details"
+            android:textColor="@color/action_bar"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/partysymbol_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/partydetails_tv"
+            android:layout_marginTop="25dp"
+            android:text="@string/partysymbol_text"
+            android:textColor="@color/action_bar"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/party_imageview"
+            android:layout_below="@+id/partysymbol_tv"
+
+            />
+
+        <TextView
+            android:id="@+id/partyabbrv_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/party_imageview"
+            android:layout_marginTop="25dp"
+            android:text="@string/partyabbrv_text"
+            android:textColor="@color/action_bar"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/partyabbrv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/partyabbrv_tv"
+            android:layout_marginTop="25dp"
+            android:text="@string/partyabbrv_text"
+            android:textColor="@color/action_bar"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/partywebsite_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/partyabbrv"
+            android:layout_marginTop="25dp"
+            android:text="@string/partywebsite_text"
+            android:textColor="@color/action_bar"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/partywebsite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/partywebsite_tv"
+            android:layout_marginTop="25dp"
+            android:text="@string/partywebsite_text"
+            android:textColor="@color/action_bar"
+            android:textStyle="italic" />
+
+
+        <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/stations_recycler_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/partydetails_tv"-->
+        <!--android:paddingTop="10sp" />-->
+
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

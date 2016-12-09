@@ -172,6 +172,15 @@ Then I go to the polling clerk who will mark my left small finger with indelible
 
     <string name="report_violation">Report an election offence to the authorities</string>
     <string name="search_polling_text">Search for a Polling Station or Registration Centre</string>
+    <string name="search_parties_text">Search for a Political Party in Kenya</string>
+    <string name="party_text">Political Party</string>
+    <string name="partysymbol_text">Political Party Symbol</string>
+    <string name="partyabbrv_text">Political Party Abbreviation</string>
+    <string name="partywebsite_text">Political Party Website</string>
+    <string name="party_details">Political Party Details</string>
+    <string name="party_symbol">Political Party Symbol</string>
+    <string name="party_abbrv">Political Party Abbreviation</string>
+    <string name="party_website">Political Party Website</string>
     <string name="county_text">County</string>
     <string name="constituency_text">Constituency</string>
     <string name="ward_text">Ward</string>

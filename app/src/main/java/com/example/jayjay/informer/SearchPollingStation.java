@@ -52,7 +52,7 @@ import java.util.Set;
 public class SearchPollingStation extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
-    private DatabaseReference spinnerReference, countyReference;
+    private DatabaseReference spinnerReference;
     private Spinner countyspinner;
     private Spinner constituencyspinner;
     private Spinner wardspinner;
