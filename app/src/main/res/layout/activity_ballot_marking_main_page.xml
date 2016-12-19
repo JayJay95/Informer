@@ -50,12 +50,12 @@
 
                 <Button
                     android:id="@+id/speakBallotMarkingButton"
-                    android:layout_width="100dp"
-                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
                     android:drawableLeft="@drawable/ic_speaker_black_24dp"
-                    android:text="Read Aloud" />
+                    android:text="@string/read_aloud" />
 
                 <TextView
                     android:id="@+id/ballotMarkingMainPageText1"

@@ -89,7 +89,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".VoterRegMainPage"
-            android:label="Learn about Voter Registration"
+            android:label="Voter Registration"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VoteInvite"
@@ -155,6 +155,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SearchPollingStation"
+            android:label="Find a Polling Station"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VotingMainPage"
@@ -164,30 +165,39 @@
         <activity android:name=".VotingProcessSlider" />
         <activity
             android:name=".VoterRights"
+            android:label="Voter Rights"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VoterDuties"
+            android:label="Voter Duties"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ElectionOffences"
+            android:label="Election Offences"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Penalties"
+            android:label="Election Penalties"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BallotMarkingMainPage"
+            android:label="Marking a Ballot"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ValidBallot"
+            android:label="Valid Ballots"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RejectBallot"
+            android:label="Rejected Ballots"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VerifyStatus"
+            android:label="Verify your Registration Status"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".PartiesActivity"
+            android:label="Political Parties in Kenya"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

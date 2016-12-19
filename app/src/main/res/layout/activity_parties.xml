@@ -17,10 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
+        </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
     <RelativeLayout
         android:id="@+id/activity_search_party"
         android:layout_width="match_parent"
@@ -42,12 +47,19 @@
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
+        <View
+            android:layout_marginTop="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_below="@+id/search_party"
+            android:id="@+id/myfirstline"
+            android:background="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/party_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/search_party"
+            android:layout_below="@+id/myfirstline"
             android:layout_marginTop="25dp"
             android:text="@string/party_text"
             android:textColor="@color/action_bar"
@@ -62,6 +74,7 @@
             android:hint="Choose a party" />
 
 
+
         <TextView
             android:id="@+id/partydetails_tv"
             android:layout_width="match_parent"
@@ -74,29 +87,46 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:gravity="center" />
 
+        <View
+            android:layout_marginTop="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_below="@+id/partydetails_tv"
+            android:id="@+id/myline"
+            android:background="@color/colorPrimary" />
+
         <TextView
             android:id="@+id/partysymbol_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/partydetails_tv"
+            android:layout_below="@+id/myline"
             android:layout_marginTop="25dp"
             android:text="@string/partysymbol_text"
             android:textColor="@color/action_bar"
             android:textStyle="bold" />
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/partysymbol"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/party_imageview"
             android:layout_below="@+id/partysymbol_tv"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/action_bar"
+            android:textStyle="italic" />
 
-            />
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/party_imageview"-->
+        <!--android:layout_below="@+id/partysymbol_tv"-->
+
+        <!--/>-->
 
         <TextView
             android:id="@+id/partyabbrv_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/party_imageview"
+            android:layout_below="@+id/partysymbol"
             android:layout_marginTop="25dp"
             android:text="@string/partyabbrv_text"
             android:textColor="@color/action_bar"
@@ -108,9 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/partyabbrv_tv"
             android:layout_marginTop="25dp"
-            android:text="@string/partyabbrv_text"
-            android:textColor="@color/action_bar"
-            android:textStyle="italic" />
+            android:textColor="@color/action_bar" />
 
         <TextView
             android:id="@+id/partywebsite_tv"
@@ -128,7 +156,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/partywebsite_tv"
             android:layout_marginTop="25dp"
-            android:text="@string/partywebsite_text"
             android:textColor="@color/action_bar"
             android:textStyle="italic" />
 
@@ -142,5 +169,5 @@
 
 
     </RelativeLayout>
-
+    </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

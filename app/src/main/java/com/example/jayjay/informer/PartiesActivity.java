@@ -5,11 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +41,9 @@ public class PartiesActivity extends AppCompatActivity implements AdapterView.On
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private Spinner partySpinner;
+    private final List<Parties> party_objects = new ArrayList<Parties>();
+
+    private TextView partyAbbrv, partyWebsite, partySymbol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,24 +143,27 @@ public class PartiesActivity extends AppCompatActivity implements AdapterView.On
                     }
                 })
                 .build();
+        partySymbol = (TextView) findViewById(R.id.partysymbol);
+        partyAbbrv = (TextView) findViewById(R.id.partyabbrv);
+        partyWebsite = (TextView) findViewById(R.id.partywebsite);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        databaseReference.child("partiesData").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("partiesData").orderByChild("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 final List<String> party_name = new ArrayList<String>();
 
                 for (DataSnapshot partySnapshot : dataSnapshot.getChildren()) {
-                    String partyName = partySnapshot.child("name").getValue(String.class);
-                    party_name.add(partyName);
+                    Parties partySnap = partySnapshot.getValue(Parties.class);
+                    party_name.add(partySnap.getName());
+                    party_objects.add(partySnap);
                 }
-                Set<String> partyset = new HashSet<String>(party_name);
-                List<String> partynewlist = new ArrayList<String>(partyset);
-                Collections.sort(partynewlist);
+                Log.e("TAG", "party_objects" + party_objects.size());
+                Collections.sort(party_name);
                 partySpinner = (Spinner) findViewById(R.id.party_spinner);
                 partySpinner.setOnItemSelectedListener(PartiesActivity.this);
-                ArrayAdapter<String> partyNamesAdapter = new ArrayAdapter<String>(PartiesActivity.this, android.R.layout.simple_spinner_item, partynewlist);
+                ArrayAdapter<String> partyNamesAdapter = new ArrayAdapter<String>(PartiesActivity.this, android.R.layout.simple_spinner_item, party_name);
                 partyNamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 partySpinner.setAdapter(partyNamesAdapter);
 
@@ -171,8 +180,20 @@ public class PartiesActivity extends AppCompatActivity implements AdapterView.On
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
 
+        String item = parent.getItemAtPosition(i).toString();
+
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        partySymbol.setText("" + party_objects.get(i).getSymbol());
+        Log.e("TAG", "symb" + party_objects.get(i).getSymbol());
+        Linkify.addLinks(partySymbol, Linkify.ALL);
+        partyAbbrv.setText("" + party_objects.get(i).getAbr());
+        Log.e("TAG", "abr" + party_objects.get(i).getAbr());
+        partyWebsite.setText("" + party_objects.get(i).getWebsite());
+        Log.e("TAG", "website" + party_objects.get(i).getWebsite());
+        Linkify.addLinks(partyWebsite, Linkify.ALL);
     }
 
     @Override

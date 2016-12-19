@@ -22,14 +22,15 @@
     </android.support.design.widget.AppBarLayout>
 
     <RelativeLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize">
 
         <ImageView
         android:id="@+id/icon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:src="@drawable/ic_chat_black_24dp" />
@@ -41,8 +42,9 @@
         android:layout_gravity="center|left"
         android:gravity="center_horizontal"
         android:text="@string/send_vote_invite"
-        android:textSize="25dp"
-        android:layout_marginTop="16dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/icon"
         android:textAlignment="center" />
 
@@ -51,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:layout_below="@+id/voteInviteText"
         android:text="@string/invite_friends"
         android:theme="@style/ThemeOverlay.MyBlueButton" />

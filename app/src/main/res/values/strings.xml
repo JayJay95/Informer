@@ -35,8 +35,8 @@
     <string name="btnRecordAudio">Record Audio</string>
     <string name="or">(or)</string>
     <string name="btnUploadToServer">Upload to Server</string>
-    <string name="quickstart_message">Click the SUBSCRIBE TO ALERTS button below to get alerts on:
-        reminder to register, election day, reminder to vote.</string>
+    <string name="quickstart_message">Click the SUBSCRIBE TO ALERTS button below to get alerts on: \n\n
+        Reminder to register,\n Election day,\n Reminder to vote.</string>
     <string name="subscribe_to_news">Subscribe To Alerts</string>
     <string name="msg_subscribed">Subscribed to Alerts</string>
     <string name="log_token">Log Token</string>
@@ -185,4 +185,7 @@ Then I go to the polling clerk who will mark my left small finger with indelible
     <string name="constituency_text">Constituency</string>
     <string name="ward_text">Ward</string>
     <string name="title_activity_voting_main_page">Learn about Voting</string>
+    <string name="register_question">Are you registered?</string>
+    <string name="register_verify">Verify your registration status</string>
+    <string name="confirm_button">Confirm</string>
 </resources>

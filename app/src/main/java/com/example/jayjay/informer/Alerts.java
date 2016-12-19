@@ -162,19 +162,19 @@ public class Alerts extends AppCompatActivity {
             }
         });
 
-        Button logTokenButton = (Button) findViewById(R.id.logTokenButton);
-        logTokenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get token
-                String token = FirebaseInstanceId.getInstance().getToken();
-
-                // Log and toast
-                String msg = getString(R.string.msg_token_fmt, token);
-                Log.d(TAG, msg);
-                Toast.makeText(Alerts.this, msg, Toast.LENGTH_SHORT).show();
-            }
-        });
+//        Button logTokenButton = (Button) findViewById(R.id.logTokenButton);
+//        logTokenButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Get token
+//                String token = FirebaseInstanceId.getInstance().getToken();
+//
+//                // Log and toast
+//                String msg = getString(R.string.msg_token_fmt, token);
+//                Log.d(TAG, msg);
+//                Toast.makeText(Alerts.this, msg, Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
 }
