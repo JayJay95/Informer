@@ -26,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical">
+
     <RelativeLayout
         android:id="@+id/activity_search_party"
         android:layout_width="match_parent"
@@ -50,7 +51,7 @@
         <View
             android:layout_marginTop="10sp"
             android:layout_width="match_parent"
-            android:layout_height="6dp"
+            android:layout_height="4dp"
             android:layout_below="@+id/search_party"
             android:id="@+id/myfirstline"
             android:background="@color/colorPrimary" />
@@ -90,7 +91,7 @@
         <View
             android:layout_marginTop="10sp"
             android:layout_width="match_parent"
-            android:layout_height="6dp"
+            android:layout_height="4dp"
             android:layout_below="@+id/partydetails_tv"
             android:id="@+id/myline"
             android:background="@color/colorPrimary" />
@@ -111,8 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/partysymbol_tv"
             android:layout_marginTop="25dp"
-            android:textColor="@color/action_bar"
-            android:textStyle="italic" />
+            android:textColor="@color/action_bar" />
 
         <!--<ImageView-->
         <!--android:layout_width="wrap_content"-->
@@ -156,8 +156,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/partywebsite_tv"
             android:layout_marginTop="25dp"
-            android:textColor="@color/action_bar"
-            android:textStyle="italic" />
+            android:layout_marginBottom="25sp"
+            android:paddingBottom="25dp"
+            android:textColor="@color/action_bar" />
 
 
         <!--<android.support.v7.widget.RecyclerView-->

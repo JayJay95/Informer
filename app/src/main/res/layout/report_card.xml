@@ -17,42 +17,51 @@
             <TextView
                 android:id="@+id/reportcard_firstname"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/accent" />
 
             <TextView
                 android:id="@+id/reportcard_lastname"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/accent" />
 
             <TextView
                 android:id="@+id/reportcard_county"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/accent" />
 
             <TextView
                 android:id="@+id/reportcard_constituency"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/accent" />
 
             <TextView
                 android:id="@+id/reportcard_ward"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/accent" />
 
             <TextView
                 android:id="@+id/reportcard_pollingstation"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/accent" />
 
             <TextView
                 android:id="@+id/reportcard_description"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/accent" />
 
             <TextView
                 android:id="@+id/reportcard_perpetrator"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:textColor="@color/accent" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

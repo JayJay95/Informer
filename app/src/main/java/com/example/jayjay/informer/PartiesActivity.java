@@ -60,123 +60,132 @@ public class PartiesActivity extends AppCompatActivity implements AdapterView.On
             startActivity(new Intent(this, LogInActivity.class));
         } else {
             Log.e("TAG", "User ID: " + firebaseAuth.getCurrentUser().getUid());
-        }
 
 
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.drawer_item_home).withIcon(getResources().getDrawable(R.drawable.ic_home_black_24dp));
-        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName(R.string.drawer_item_voter_education).withIcon(getResources().getDrawable(R.drawable.ic_menu_educate));
-        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName(R.string.drawer_item_polling_stations).withIcon(getResources().getDrawable(R.drawable.ic_polling_station));
-        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName(R.string.drawer_item_faq).withIcon(getResources().getDrawable(R.drawable.ic_faq_list));
-        PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName(R.string.drawer_item_reports).withIcon(getResources().getDrawable(R.drawable.ic_report_violation));
-        PrimaryDrawerItem item6 = new PrimaryDrawerItem().withIdentifier(6).withName(R.string.drawer_item_countdown).withIcon(getResources().getDrawable(R.drawable.ic_menu_timer));
-
-        SecondaryDrawerItem item7 = new SecondaryDrawerItem().withIdentifier(7).withName(R.string.drawer_item_alerts).withIcon(getResources().getDrawable(R.drawable.ic_menu_share));
-        SecondaryDrawerItem item8 = new SecondaryDrawerItem().withIdentifier(8).withName(R.string.drawer_item_invites).withIcon(getResources().getDrawable(R.drawable.ic_chat_black_24dp));
+            PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.drawer_item_home).withIcon(getResources().getDrawable(R.drawable.ic_home_black_24dp));
+            PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName(R.string.drawer_item_voter_education).withIcon(getResources().getDrawable(R.drawable.ic_menu_educate));
+            PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("Search for Polling Stations").withIcon(getResources().getDrawable(R.drawable.ic_polling_station));
+            PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("View Political Parties").withIcon(getResources().getDrawable(R.drawable.ic_group_work_black_24dp));
+            PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName(R.string.drawer_item_reports).withIcon(getResources().getDrawable(R.drawable.ic_report_violation));
+            PrimaryDrawerItem item6 = new PrimaryDrawerItem().withIdentifier(6).withName("Election Day Countdown").withIcon(getResources().getDrawable(R.drawable.ic_menu_timer));
 
 
-        // Create the AccountHeader
-        AccountHeader headerResult = new AccountHeaderBuilder()
-                .withActivity(this)
-                .withHeaderBackground(R.drawable.myheader)
-                .addProfiles(
-                        new ProfileDrawerItem().withName(firebaseAuth.getCurrentUser().getDisplayName()).withEmail(firebaseAuth.getCurrentUser().getEmail()).withIcon((R.drawable.profile))
-                )
-                .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
-                    @Override
-                    public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
-                        return false;
-                    }
-                })
-                .build();
+            SecondaryDrawerItem item7 = new SecondaryDrawerItem().withIdentifier(7).withName("Get Alerts").withIcon(getResources().getDrawable(R.drawable.ic_menu_share));
+            SecondaryDrawerItem item8 = new SecondaryDrawerItem().withIdentifier(8).withName("Send Invites").withIcon(getResources().getDrawable(R.drawable.ic_chat_black_24dp));
+            SecondaryDrawerItem item9 = new SecondaryDrawerItem().withIdentifier(9).withName("FAQs").withIcon(getResources().getDrawable(R.drawable.ic_faq_list));
+            SecondaryDrawerItem item10 = new SecondaryDrawerItem().withIdentifier(10).withName("Maps").withIcon(getResources().getDrawable(R.drawable.ic_polling_station));
 
-        //create the drawer and remember the `Drawer` result object
-        Drawer result = new DrawerBuilder()
-                .withAccountHeader(headerResult)
-                .withActivity(this)
-                .withToolbar(toolbar)
-                .addDrawerItems(
-                        item1,
-                        item2,
-                        item3,
-                        item4,
-                        item5,
-                        item6,
-                        new DividerDrawerItem(),
-                        item7,
-                        item8
-                )
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        // do something with the clicked item :D
-                        if (drawerItem != null) {
-                            Intent intent = null;
-                            if (drawerItem.getIdentifier() == 1) {
-                                intent = new Intent(PartiesActivity.this, HomeActivity.class);
-                            }
-                            if (drawerItem.getIdentifier() == 2) {
-                                intent = new Intent(PartiesActivity.this, VoterEducation.class);
-                            }
-                            if (drawerItem.getIdentifier() == 3) {
-                                intent = new Intent(PartiesActivity.this, SearchPollingStation.class);
-                            }
-                            if (drawerItem.getIdentifier() == 4) {
-                                intent = new Intent(PartiesActivity.this, FaqList.class);
-                            }
-                            if (drawerItem.getIdentifier() == 5) {
-                                intent = new Intent(PartiesActivity.this, ViolationReports.class);
-                            }
-                            if (drawerItem.getIdentifier() == 6) {
-                                intent = new Intent(PartiesActivity.this, CountDown.class);
-                            }
-                            if (drawerItem.getIdentifier() == 7) {
-                                intent = new Intent(PartiesActivity.this, Alerts.class);
-                            }
-                            if (drawerItem.getIdentifier() == 8) {
-                                intent = new Intent(PartiesActivity.this, VoteInvite.class);
-                            }
-                            if (intent != null) {
-                                PartiesActivity.this.startActivity(intent);
-                            }
+            // Create the AccountHeader
+            AccountHeader headerResult = new AccountHeaderBuilder()
+                    .withActivity(this)
+                    .withHeaderBackground(R.drawable.myheader)
+                    .addProfiles(
+                            new ProfileDrawerItem().withName(firebaseAuth.getCurrentUser().getDisplayName()).withEmail(firebaseAuth.getCurrentUser().getEmail()).withIcon((R.drawable.profile))
+                    )
+                    .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
+                        @Override
+                        public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
+                            return false;
                         }
-                        return false;
+                    })
+                    .build();
+
+            //create the drawer and remember the `Drawer` result object
+            Drawer result = new DrawerBuilder()
+                    .withAccountHeader(headerResult)
+                    .withActivity(this)
+                    .withToolbar(toolbar)
+                    .addDrawerItems(
+                            item1,
+                            item2,
+                            item3,
+                            item4,
+                            item5,
+                            item6,
+                            new DividerDrawerItem(),
+                            item7,
+                            item8,
+                            item9,
+                            item10
+                    )
+                    .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                        @Override
+                        public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                            // do something with the clicked item :D
+                            if (drawerItem != null) {
+                                Intent intent = null;
+                                if (drawerItem.getIdentifier() == 1) {
+                                    intent = new Intent(PartiesActivity.this, HomeActivity.class);
+                                }
+                                if (drawerItem.getIdentifier() == 2) {
+                                    intent = new Intent(PartiesActivity.this, VoterEducation.class);
+                                }
+                                if (drawerItem.getIdentifier() == 3) {
+                                    intent = new Intent(PartiesActivity.this, SearchPollingStation.class);
+                                }
+                                if (drawerItem.getIdentifier() == 4) {
+                                    intent = new Intent(PartiesActivity.this, PartiesActivity.class);
+                                }
+                                if (drawerItem.getIdentifier() == 5) {
+                                    intent = new Intent(PartiesActivity.this, ViolationReports.class);
+                                }
+                                if (drawerItem.getIdentifier() == 6) {
+                                    intent = new Intent(PartiesActivity.this, CountDown.class);
+                                }
+                                if (drawerItem.getIdentifier() == 7) {
+                                    intent = new Intent(PartiesActivity.this, Alerts.class);
+                                }
+                                if (drawerItem.getIdentifier() == 8) {
+                                    intent = new Intent(PartiesActivity.this, VoteInvite.class);
+                                }
+                                if (drawerItem.getIdentifier() == 9) {
+                                    intent = new Intent(PartiesActivity.this, FaqList.class);
+                                }
+                                if (drawerItem.getIdentifier() == 10) {
+                                    intent = new Intent(PartiesActivity.this, PollingStations.class);
+                                }
+                                if (intent != null) {
+                                    PartiesActivity.this.startActivity(intent);
+                                }
+                            }
+                            return false;
+                        }
+                    })
+                    .build();
+            partySymbol = (TextView) findViewById(R.id.partysymbol);
+            partyAbbrv = (TextView) findViewById(R.id.partyabbrv);
+            partyWebsite = (TextView) findViewById(R.id.partywebsite);
+
+            databaseReference = FirebaseDatabase.getInstance().getReference();
+
+            databaseReference.child("partiesData").orderByChild("name").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    final List<String> party_name = new ArrayList<String>();
+
+                    for (DataSnapshot partySnapshot : dataSnapshot.getChildren()) {
+                        Parties partySnap = partySnapshot.getValue(Parties.class);
+                        party_name.add(partySnap.getName());
+                        party_objects.add(partySnap);
                     }
-                })
-                .build();
-        partySymbol = (TextView) findViewById(R.id.partysymbol);
-        partyAbbrv = (TextView) findViewById(R.id.partyabbrv);
-        partyWebsite = (TextView) findViewById(R.id.partywebsite);
+                    Log.e("TAG", "party_objects" + party_objects.size());
+                    Collections.sort(party_name);
+                    partySpinner = (Spinner) findViewById(R.id.party_spinner);
+                    partySpinner.setOnItemSelectedListener(PartiesActivity.this);
+                    ArrayAdapter<String> partyNamesAdapter = new ArrayAdapter<String>(PartiesActivity.this, android.R.layout.simple_spinner_item, party_name);
+                    partyNamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    partySpinner.setAdapter(partyNamesAdapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-
-        databaseReference.child("partiesData").orderByChild("name").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                final List<String> party_name = new ArrayList<String>();
-
-                for (DataSnapshot partySnapshot : dataSnapshot.getChildren()) {
-                    Parties partySnap = partySnapshot.getValue(Parties.class);
-                    party_name.add(partySnap.getName());
-                    party_objects.add(partySnap);
                 }
-                Log.e("TAG", "party_objects" + party_objects.size());
-                Collections.sort(party_name);
-                partySpinner = (Spinner) findViewById(R.id.party_spinner);
-                partySpinner.setOnItemSelectedListener(PartiesActivity.this);
-                ArrayAdapter<String> partyNamesAdapter = new ArrayAdapter<String>(PartiesActivity.this, android.R.layout.simple_spinner_item, party_name);
-                partyNamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                partySpinner.setAdapter(partyNamesAdapter);
 
-            }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                }
 
-            }
+            });
 
-        });
-
-
+        }
     }
 
     @Override
@@ -186,12 +195,12 @@ public class PartiesActivity extends AppCompatActivity implements AdapterView.On
 
         // Showing selected spinner item
         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-        partySymbol.setText("" + party_objects.get(i).getSymbol());
+        partySymbol.setText("Click to view party symbol: " + party_objects.get(i).getSymbol());
         Log.e("TAG", "symb" + party_objects.get(i).getSymbol());
         Linkify.addLinks(partySymbol, Linkify.ALL);
         partyAbbrv.setText("" + party_objects.get(i).getAbr());
         Log.e("TAG", "abr" + party_objects.get(i).getAbr());
-        partyWebsite.setText("" + party_objects.get(i).getWebsite());
+        partyWebsite.setText("Click to view party website: " + party_objects.get(i).getWebsite());
         Log.e("TAG", "website" + party_objects.get(i).getWebsite());
         Linkify.addLinks(partyWebsite, Linkify.ALL);
     }

@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,6 +34,8 @@ public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
+    private NetworkImageView verifyregistrationNetworkImageView;
+    private ImageLoader verifyregistrationImageLoader;
     ActionBarDrawerToggle toggle;
     private static final int RC_SIGN_IN = 0;
     private Button goToRegVerificationbutton;
@@ -59,16 +63,16 @@ public class HomeActivity extends AppCompatActivity {
             Log.e("TAG", "User ID: " + firebaseAuth.getCurrentUser().getUid());
             PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.drawer_item_home).withIcon(getResources().getDrawable(R.drawable.ic_home_black_24dp));
             PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName(R.string.drawer_item_voter_education).withIcon(getResources().getDrawable(R.drawable.ic_menu_educate));
-            PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName(R.string.drawer_item_polling_stations).withIcon(getResources().getDrawable(R.drawable.ic_polling_station));
-            PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName(R.string.drawer_item_faq).withIcon(getResources().getDrawable(R.drawable.ic_faq_list));
+            PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("Search for Polling Stations").withIcon(getResources().getDrawable(R.drawable.ic_polling_station));
+            PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("View Political Parties").withIcon(getResources().getDrawable(R.drawable.ic_group_work_black_24dp));
             PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName(R.string.drawer_item_reports).withIcon(getResources().getDrawable(R.drawable.ic_report_violation));
-            PrimaryDrawerItem item6 = new PrimaryDrawerItem().withIdentifier(6).withName(R.string.drawer_item_countdown).withIcon(getResources().getDrawable(R.drawable.ic_menu_timer));
+            PrimaryDrawerItem item6 = new PrimaryDrawerItem().withIdentifier(6).withName("Election Day Countdown").withIcon(getResources().getDrawable(R.drawable.ic_menu_timer));
 
 
-            SecondaryDrawerItem item7 = new SecondaryDrawerItem().withIdentifier(7).withName(R.string.drawer_item_alerts).withIcon(getResources().getDrawable(R.drawable.ic_menu_share));
-            SecondaryDrawerItem item8 = new SecondaryDrawerItem().withIdentifier(8).withName(R.string.drawer_item_invites).withIcon(getResources().getDrawable(R.drawable.ic_chat_black_24dp));
-            SecondaryDrawerItem item9 = new SecondaryDrawerItem().withIdentifier(9).withName(R.string.myMap).withIcon(getResources().getDrawable(R.drawable.ic_polling_station));
-            SecondaryDrawerItem item10 = new SecondaryDrawerItem().withIdentifier(10).withName("Political Parties").withIcon(getResources().getDrawable(R.drawable.ic_menu_educate));
+            SecondaryDrawerItem item7 = new SecondaryDrawerItem().withIdentifier(7).withName("Get Alerts").withIcon(getResources().getDrawable(R.drawable.ic_menu_share));
+            SecondaryDrawerItem item8 = new SecondaryDrawerItem().withIdentifier(8).withName("Send Invites").withIcon(getResources().getDrawable(R.drawable.ic_chat_black_24dp));
+            SecondaryDrawerItem item9 = new SecondaryDrawerItem().withIdentifier(9).withName("FAQs").withIcon(getResources().getDrawable(R.drawable.ic_faq_list));
+            SecondaryDrawerItem item10 = new SecondaryDrawerItem().withIdentifier(10).withName("Maps").withIcon(getResources().getDrawable(R.drawable.ic_polling_station));
 
             // Create the AccountHeader
             AccountHeader headerResult = new AccountHeaderBuilder()
@@ -119,7 +123,7 @@ public class HomeActivity extends AppCompatActivity {
                                     intent = new Intent(HomeActivity.this, SearchPollingStation.class);
                                 }
                                 if (drawerItem.getIdentifier() == 4) {
-                                    intent = new Intent(HomeActivity.this, FaqList.class);
+                                    intent = new Intent(HomeActivity.this, PartiesActivity.class);
                                 }
                                 if (drawerItem.getIdentifier() == 5) {
                                     intent = new Intent(HomeActivity.this, ViolationReports.class);
@@ -134,10 +138,10 @@ public class HomeActivity extends AppCompatActivity {
                                     intent = new Intent(HomeActivity.this, VoteInvite.class);
                                 }
                                 if (drawerItem.getIdentifier() == 9) {
-                                    intent = new Intent(HomeActivity.this, PollingStations.class);
+                                    intent = new Intent(HomeActivity.this, FaqList.class);
                                 }
                                 if (drawerItem.getIdentifier() == 10) {
-                                    intent = new Intent(HomeActivity.this, PartiesActivity.class);
+                                    intent = new Intent(HomeActivity.this, PollingStations.class);
                                 }
                                 if (intent != null) {
                                     HomeActivity.this.startActivity(intent);
@@ -156,6 +160,9 @@ public class HomeActivity extends AppCompatActivity {
 //            // Not logged in, launch the Log In activity
 //            loadLogInView();
 //        }
+
+            verifyregistrationNetworkImageView = (NetworkImageView) findViewById(R.id
+                    .verifystatusthumbnail);
 
             RateThisApp.Config config = new RateThisApp.Config(3, 5);
             RateThisApp.init(config);
@@ -177,6 +184,14 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        verifyregistrationImageLoader = CustomVolleyRequestQueue.getInstance(this.getApplicationContext())
+                .getImageLoader();
+        //Image URL - This can point to any image file supported by Android
+        final String verifyregistrationurl = "https://citizentv.co.ke/wp-content/uploads/2016/01/iebc-logo.jpg";
+        verifyregistrationImageLoader.get(verifyregistrationurl, ImageLoader.getImageListener(verifyregistrationNetworkImageView,
+                R.mipmap.defaultimage, android.R.drawable.ic_dialog_alert));
+        verifyregistrationNetworkImageView.setImageUrl(verifyregistrationurl, verifyregistrationImageLoader);
 
         // Monitor launch times and interval from installation
         RateThisApp.onStart(this);

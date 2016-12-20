@@ -94,127 +94,134 @@ public class ViolationReports extends AppCompatActivity implements View.OnClickL
             startActivity(new Intent(this, LogInActivity.class));
         } else {
             Log.e("TAG", "User ID: " + firebaseAuth.getCurrentUser().getUid());
-        }
+            PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.drawer_item_home).withIcon(getResources().getDrawable(R.drawable.ic_home_black_24dp));
+            PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName(R.string.drawer_item_voter_education).withIcon(getResources().getDrawable(R.drawable.ic_menu_educate));
+            PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("Search for Polling Stations").withIcon(getResources().getDrawable(R.drawable.ic_polling_station));
+            PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("View Political Parties").withIcon(getResources().getDrawable(R.drawable.ic_group_work_black_24dp));
+            PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName(R.string.drawer_item_reports).withIcon(getResources().getDrawable(R.drawable.ic_report_violation));
+            PrimaryDrawerItem item6 = new PrimaryDrawerItem().withIdentifier(6).withName("Election Day Countdown").withIcon(getResources().getDrawable(R.drawable.ic_menu_timer));
 
 
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.drawer_item_home).withIcon(getResources().getDrawable(R.drawable.ic_home_black_24dp));
-        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName(R.string.drawer_item_voter_education).withIcon(getResources().getDrawable(R.drawable.ic_menu_educate));
-        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName(R.string.drawer_item_polling_stations).withIcon(getResources().getDrawable(R.drawable.ic_polling_station));
-        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName(R.string.drawer_item_faq).withIcon(getResources().getDrawable(R.drawable.ic_faq_list));
-        PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName(R.string.drawer_item_reports).withIcon(getResources().getDrawable(R.drawable.ic_report_violation));
-        PrimaryDrawerItem item6 = new PrimaryDrawerItem().withIdentifier(6).withName(R.string.drawer_item_countdown).withIcon(getResources().getDrawable(R.drawable.ic_menu_timer));
+            SecondaryDrawerItem item7 = new SecondaryDrawerItem().withIdentifier(7).withName("Get Alerts").withIcon(getResources().getDrawable(R.drawable.ic_menu_share));
+            SecondaryDrawerItem item8 = new SecondaryDrawerItem().withIdentifier(8).withName("Send Invites").withIcon(getResources().getDrawable(R.drawable.ic_chat_black_24dp));
+            SecondaryDrawerItem item9 = new SecondaryDrawerItem().withIdentifier(9).withName("FAQs").withIcon(getResources().getDrawable(R.drawable.ic_faq_list));
+            SecondaryDrawerItem item10 = new SecondaryDrawerItem().withIdentifier(10).withName("Maps").withIcon(getResources().getDrawable(R.drawable.ic_polling_station));
 
-        SecondaryDrawerItem item7 = new SecondaryDrawerItem().withIdentifier(7).withName(R.string.drawer_item_alerts).withIcon(getResources().getDrawable(R.drawable.ic_menu_share));
-        SecondaryDrawerItem item8 = new SecondaryDrawerItem().withIdentifier(8).withName(R.string.drawer_item_invites).withIcon(getResources().getDrawable(R.drawable.ic_chat_black_24dp));
-
-
-        // Create the AccountHeader
-        AccountHeader headerResult = new AccountHeaderBuilder()
-                .withActivity(this)
-                .withHeaderBackground(R.drawable.myheader)
-                .addProfiles(
-                        new ProfileDrawerItem().withName(firebaseAuth.getCurrentUser().getDisplayName()).withEmail(firebaseAuth.getCurrentUser().getEmail()).withIcon((R.drawable.profile))
-                )
-                .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
-                    @Override
-                    public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
-                        return false;
-                    }
-                })
-                .build();
-
-        //create the drawer and remember the `Drawer` result object
-        Drawer result = new DrawerBuilder()
-                .withAccountHeader(headerResult)
-                .withActivity(this)
-                .withToolbar(toolbar)
-                .addDrawerItems(
-                        item1,
-                        item2,
-                        item3,
-                        item4,
-                        item5,
-                        item6,
-                        new DividerDrawerItem(),
-                        item7,
-                        item8
-                )
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        // do something with the clicked item :D
-                        if (drawerItem != null) {
-                            Intent intent = null;
-                            if (drawerItem.getIdentifier() == 1) {
-                                intent = new Intent(ViolationReports.this, HomeActivity.class);
-                            }
-                            if (drawerItem.getIdentifier() == 2) {
-                                intent = new Intent(ViolationReports.this, VoterEducation.class);
-                            }
-                            if (drawerItem.getIdentifier() == 3) {
-                                intent = new Intent(ViolationReports.this, SearchPollingStation.class);
-                            }
-                            if (drawerItem.getIdentifier() == 4) {
-                                intent = new Intent(ViolationReports.this, FaqList.class);
-                            }
-                            if (drawerItem.getIdentifier() == 5) {
-                                intent = new Intent(ViolationReports.this, ViolationReports.class);
-                            }
-                            if (drawerItem.getIdentifier() == 6) {
-                                intent = new Intent(ViolationReports.this, CountDown.class);
-                            }
-                            if (drawerItem.getIdentifier() == 7) {
-                                intent = new Intent(ViolationReports.this, Alerts.class);
-                            }
-                            if (drawerItem.getIdentifier() == 8) {
-                                intent = new Intent(ViolationReports.this, VoteInvite.class);
-                            }
-                            if (intent != null) {
-                                ViolationReports.this.startActivity(intent);
-                            }
+            // Create the AccountHeader
+            AccountHeader headerResult = new AccountHeaderBuilder()
+                    .withActivity(this)
+                    .withHeaderBackground(R.drawable.myheader)
+                    .addProfiles(
+                            new ProfileDrawerItem().withName(firebaseAuth.getCurrentUser().getDisplayName()).withEmail(firebaseAuth.getCurrentUser().getEmail()).withIcon((R.drawable.profile))
+                    )
+                    .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
+                        @Override
+                        public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
+                            return false;
                         }
-                        return false;
-                    }
-                })
-                .build();
-        Firebase.setAndroidContext(this);
+                    })
+                    .build();
 
-        mStorage = FirebaseStorage.getInstance().getReference();
-        mProgress = new ProgressDialog(this);
+            //create the drawer and remember the `Drawer` result object
+            Drawer result = new DrawerBuilder()
+                    .withAccountHeader(headerResult)
+                    .withActivity(this)
+                    .withToolbar(toolbar)
+                    .addDrawerItems(
+                            item1,
+                            item2,
+                            item3,
+                            item4,
+                            item5,
+                            item6,
+                            new DividerDrawerItem(),
+                            item7,
+                            item8,
+                            item9,
+                            item10
+                    )
+                    .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                        @Override
+                        public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                            // do something with the clicked item :D
+                            if (drawerItem != null) {
+                                Intent intent = null;
+                                if (drawerItem.getIdentifier() == 1) {
+                                    intent = new Intent(ViolationReports.this, HomeActivity.class);
+                                }
+                                if (drawerItem.getIdentifier() == 2) {
+                                    intent = new Intent(ViolationReports.this, VoterEducation.class);
+                                }
+                                if (drawerItem.getIdentifier() == 3) {
+                                    intent = new Intent(ViolationReports.this, SearchPollingStation.class);
+                                }
+                                if (drawerItem.getIdentifier() == 4) {
+                                    intent = new Intent(ViolationReports.this, PartiesActivity.class);
+                                }
+                                if (drawerItem.getIdentifier() == 5) {
+                                    intent = new Intent(ViolationReports.this, ViolationReports.class);
+                                }
+                                if (drawerItem.getIdentifier() == 6) {
+                                    intent = new Intent(ViolationReports.this, CountDown.class);
+                                }
+                                if (drawerItem.getIdentifier() == 7) {
+                                    intent = new Intent(ViolationReports.this, Alerts.class);
+                                }
+                                if (drawerItem.getIdentifier() == 8) {
+                                    intent = new Intent(ViolationReports.this, VoteInvite.class);
+                                }
+                                if (drawerItem.getIdentifier() == 9) {
+                                    intent = new Intent(ViolationReports.this, FaqList.class);
+                                }
+                                if (drawerItem.getIdentifier() == 10) {
+                                    intent = new Intent(ViolationReports.this, PollingStations.class);
+                                }
+                                if (intent != null) {
+                                    ViolationReports.this.startActivity(intent);
+                                }
+                            }
+                            return false;
+                        }
+                    })
+                    .build();
+            Firebase.setAndroidContext(this);
 
-        buttonSave = (Button) findViewById(R.id.buttonSave);
-        btnCapturePicture = (ImageButton) findViewById(R.id.btnCapturePicture);
-        btnRecordAudio = (ImageButton) findViewById(R.id.btnRecordAudio);
-        btnRecordVideo = (ImageButton) findViewById(R.id.btnRecordVideo);
-        editFirstName = (EditText) findViewById(R.id.editFirstName);
-        editLastName = (EditText) findViewById(R.id.editLastName);
-        editTextCounty = (EditText) findViewById(R.id.editTextCounty);
-        editTextConstituency = (EditText) findViewById(R.id.editTextConstituency);
-        editTextWard = (EditText) findViewById(R.id.editTextWard);
-        editTextPollingStation = (EditText) findViewById(R.id.editTextPollingStation);
-        editDescription = (EditText) findViewById(R.id.editTextDescription);
-        editPerpetrator = (EditText) findViewById(R.id.editTextPerpetrator);
+            mStorage = FirebaseStorage.getInstance().getReference();
+            mProgress = new ProgressDialog(this);
 
-        //textViewPersons = (TextView) findViewById(R.id.textViewPersons);
+            buttonSave = (Button) findViewById(R.id.buttonSave);
+            btnCapturePicture = (ImageButton) findViewById(R.id.btnCapturePicture);
+            btnRecordAudio = (ImageButton) findViewById(R.id.btnRecordAudio);
+            btnRecordVideo = (ImageButton) findViewById(R.id.btnRecordVideo);
+            editFirstName = (EditText) findViewById(R.id.editFirstName);
+            editLastName = (EditText) findViewById(R.id.editLastName);
+            editTextCounty = (EditText) findViewById(R.id.editTextCounty);
+            editTextConstituency = (EditText) findViewById(R.id.editTextConstituency);
+            editTextWard = (EditText) findViewById(R.id.editTextWard);
+            editTextPollingStation = (EditText) findViewById(R.id.editTextPollingStation);
+            editDescription = (EditText) findViewById(R.id.editTextDescription);
+            editPerpetrator = (EditText) findViewById(R.id.editTextPerpetrator);
 
-        showReports = (Button) findViewById(R.id.showReports);
+            //textViewPersons = (TextView) findViewById(R.id.textViewPersons);
+
+            showReports = (Button) findViewById(R.id.showReports);
 
 
-        buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Creating firebase object
-                Firebase ref = new Firebase(Config.FIREBASE_URL);
+            buttonSave.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Creating firebase object
+                    Firebase ref = new Firebase(Config.FIREBASE_URL);
 
-                //Getting values to store
-                String firstname = editFirstName.getText().toString().trim();
-                String lastname = editLastName.getText().toString().trim();
-                String county = editTextCounty.getText().toString().trim();
-                String constituency = editTextConstituency.getText().toString().trim();
-                String ward = editTextWard.getText().toString().trim();
-                String pollingstation = editTextPollingStation.getText().toString().trim();
-                String description = editDescription.getText().toString().trim();
-                String perpetrator = editPerpetrator.getText().toString().trim();
+                    //Getting values to store
+                    String firstname = editFirstName.getText().toString().trim();
+                    String lastname = editLastName.getText().toString().trim();
+                    String county = editTextCounty.getText().toString().trim();
+                    String constituency = editTextConstituency.getText().toString().trim();
+                    String ward = editTextWard.getText().toString().trim();
+                    String pollingstation = editTextPollingStation.getText().toString().trim();
+                    String description = editDescription.getText().toString().trim();
+                    String perpetrator = editPerpetrator.getText().toString().trim();
 
 //                //Creating Person object
 //                ReportPOJO reportpojo = new ReportPOJO();
@@ -225,35 +232,35 @@ public class ViolationReports extends AppCompatActivity implements View.OnClickL
 //                reportpojo.setCounty(county);
 //                reportpojo.setDescription(description);
 //                reportpojo.setPerpetrator(perpetrator);
-                if (firstname.equals("")) {
-                    editFirstName.setError("Your First Name is required!");
-                    Toast.makeText(v.getContext(), "Your First Name is required!", Toast.LENGTH_LONG).show();
-                } else if (lastname.equals("")) {
-                    editLastName.setError("Your Last Name is required!");
-                    Toast.makeText(v.getContext(), "Your Last Name is required!", Toast.LENGTH_LONG).show();
-                } else if (county.equals("")) {
-                    editTextCounty.setError("Please fill in the county!");
-                    Toast.makeText(v.getContext(), "Please fill in the county!", Toast.LENGTH_LONG).show();
-                } else if (constituency.equals("")) {
-                    editTextConstituency.setError("Please fill in the constituency!");
-                    Toast.makeText(v.getContext(), "Please fill in the constituency!", Toast.LENGTH_LONG).show();
-                } else if (ward.equals("")) {
-                    editTextWard.setError("Please fill in the ward!");
-                    Toast.makeText(v.getContext(), "Please fill in the ward!", Toast.LENGTH_LONG).show();
-                } else if (pollingstation.equals("")) {
-                    editTextPollingStation.setError("Please fill in the polling station!");
-                    Toast.makeText(v.getContext(), "Please fill in the polling station!", Toast.LENGTH_LONG).show();
-                } else if (description.equals("")) {
-                    editDescription.setError("Please fill in the description!");
-                    Toast.makeText(v.getContext(), "Please fill in the description!", Toast.LENGTH_LONG).show();
-                } else if (perpetrator.equals("")) {
-                    editPerpetrator.setError("Please fill in the perpetrator!!");
-                    Toast.makeText(v.getContext(), "Please fill in the perpetrator!", Toast.LENGTH_LONG).show();
-                } else {
-                    //Storing values to firebase
-                    ref.child("ReportPOJO").push().setValue(new ReportPOJO(firstname, lastname, county, constituency, ward, pollingstation, description, perpetrator));
+                    if (firstname.equals("")) {
+                        editFirstName.setError("Your First Name is required!");
+                        Toast.makeText(v.getContext(), "Your First Name is required!", Toast.LENGTH_LONG).show();
+                    } else if (lastname.equals("")) {
+                        editLastName.setError("Your Last Name is required!");
+                        Toast.makeText(v.getContext(), "Your Last Name is required!", Toast.LENGTH_LONG).show();
+                    } else if (county.equals("")) {
+                        editTextCounty.setError("Please fill in the county!");
+                        Toast.makeText(v.getContext(), "Please fill in the county!", Toast.LENGTH_LONG).show();
+                    } else if (constituency.equals("")) {
+                        editTextConstituency.setError("Please fill in the constituency!");
+                        Toast.makeText(v.getContext(), "Please fill in the constituency!", Toast.LENGTH_LONG).show();
+                    } else if (ward.equals("")) {
+                        editTextWard.setError("Please fill in the ward!");
+                        Toast.makeText(v.getContext(), "Please fill in the ward!", Toast.LENGTH_LONG).show();
+                    } else if (pollingstation.equals("")) {
+                        editTextPollingStation.setError("Please fill in the polling station!");
+                        Toast.makeText(v.getContext(), "Please fill in the polling station!", Toast.LENGTH_LONG).show();
+                    } else if (description.equals("")) {
+                        editDescription.setError("Please fill in the description!");
+                        Toast.makeText(v.getContext(), "Please fill in the description!", Toast.LENGTH_LONG).show();
+                    } else if (perpetrator.equals("")) {
+                        editPerpetrator.setError("Please fill in the perpetrator!!");
+                        Toast.makeText(v.getContext(), "Please fill in the perpetrator!", Toast.LENGTH_LONG).show();
+                    } else {
+                        //Storing values to firebase
+                        ref.child("ReportPOJO").push().setValue(new ReportPOJO(firstname, lastname, county, constituency, ward, pollingstation, description, perpetrator));
 
-                    Toast.makeText(v.getContext(), "Report has been sent", Toast.LENGTH_LONG).show();
+                        Toast.makeText(v.getContext(), "Report has been sent", Toast.LENGTH_LONG).show();
 //                //Value event listener for realtime data update
 //                    ref.addValueEventListener(new ValueEventListener() {
 //                        @Override
@@ -276,51 +283,52 @@ public class ViolationReports extends AppCompatActivity implements View.OnClickL
 //                        System.out.println("The read failed: " + firebaseError.getMessage());
 //                    }
 //                });
+                    }
                 }
-            }
-        });
+            });
 
-        mFileName = Environment.getExternalStorageDirectory().getAbsolutePath();
-        mFileName += "/recorded_audio.3gp";
+            mFileName = Environment.getExternalStorageDirectory().getAbsolutePath();
+            mFileName += "/recorded_audio.3gp";
 
 
-        videoFileName = Environment.getExternalStorageDirectory().getAbsolutePath();
-        videoFileName += "/recorded_video.mpeg";
+            videoFileName = Environment.getExternalStorageDirectory().getAbsolutePath();
+            videoFileName += "/recorded_video.mpeg";
 
-        btnRecordAudio.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                    startRecording();
-                } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                    stopRecording();
-                    Toast.makeText(view.getContext(), "Recording stopped ...", Toast.LENGTH_LONG).show();
+            btnRecordAudio.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                        startRecording();
+                    } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                        stopRecording();
+                        Toast.makeText(view.getContext(), "Recording stopped ...", Toast.LENGTH_LONG).show();
+                    }
+                    return false;
                 }
-                return false;
-            }
-        });
-        btnCapturePicture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            });
+            btnCapturePicture.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, CAMERA_REQUEST_CODE);
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, CAMERA_REQUEST_CODE);
 
 
-            }
-        });
-        btnRecordVideo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-                if (takeVideoIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
                 }
-            }
-        });
+            });
+            btnRecordVideo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+                    if (takeVideoIntent.resolveActivity(getPackageManager()) != null) {
+                        startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
+                    }
+                }
+            });
 
-        showReports.setOnClickListener(this);
+            showReports.setOnClickListener(this);
 
+        }
     }
 
     private void startRecording() {
