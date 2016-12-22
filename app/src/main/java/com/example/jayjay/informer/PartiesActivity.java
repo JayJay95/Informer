@@ -14,6 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,6 +44,8 @@ public class PartiesActivity extends AppCompatActivity implements AdapterView.On
     private DatabaseReference databaseReference;
     private Spinner partySpinner;
     private final List<Parties> party_objects = new ArrayList<Parties>();
+    private NetworkImageView partySymbolNetworkImageView;
+    private ImageLoader partySymbolImageLoader;
 
     private TextView partyAbbrv, partyWebsite, partySymbol;
 
@@ -152,7 +156,7 @@ public class PartiesActivity extends AppCompatActivity implements AdapterView.On
                         }
                     })
                     .build();
-            partySymbol = (TextView) findViewById(R.id.partysymbol);
+            //partySymbol = (TextView) findViewById(R.id.partysymbol);
             partyAbbrv = (TextView) findViewById(R.id.partyabbrv);
             partyWebsite = (TextView) findViewById(R.id.partywebsite);
 
@@ -185,6 +189,9 @@ public class PartiesActivity extends AppCompatActivity implements AdapterView.On
 
             });
 
+            partySymbolNetworkImageView = (NetworkImageView) findViewById(R.id
+                    .symbolimage);
+
         }
     }
 
@@ -195,12 +202,20 @@ public class PartiesActivity extends AppCompatActivity implements AdapterView.On
 
         // Showing selected spinner item
         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-        partySymbol.setText("Click to view party symbol: " + party_objects.get(i).getSymbol());
+
+        partySymbolImageLoader = CustomVolleyRequestQueue.getInstance(this.getApplicationContext())
+                .getImageLoader();
+        //Image URL - This can point to any image file supported by Android
+        final String partysymbolurl = party_objects.get(i).getSymbol().toString();
+        partySymbolImageLoader.get(partysymbolurl, ImageLoader.getImageListener(partySymbolNetworkImageView,
+                R.mipmap.defaultimage, android.R.drawable.ic_dialog_alert));
+        partySymbolNetworkImageView.setImageUrl(partysymbolurl, partySymbolImageLoader);
+        //partySymbol.setText("Click to view party symbol: " + party_objects.get(i).getSymbol());
         Log.e("TAG", "symb" + party_objects.get(i).getSymbol());
-        Linkify.addLinks(partySymbol, Linkify.ALL);
+        //Linkify.addLinks(partySymbol, Linkify.ALL);
         partyAbbrv.setText("" + party_objects.get(i).getAbr());
         Log.e("TAG", "abr" + party_objects.get(i).getAbr());
-        partyWebsite.setText("Click to view party website: " + party_objects.get(i).getWebsite());
+        partyWebsite.setText("Click to view more details about the party: " + party_objects.get(i).getWebsite());
         Log.e("TAG", "website" + party_objects.get(i).getWebsite());
         Linkify.addLinks(partyWebsite, Linkify.ALL);
     }

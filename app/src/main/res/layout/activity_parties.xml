@@ -106,27 +106,29 @@
             android:textColor="@color/action_bar"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/partysymbol"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/partysymbol_tv"
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/symbolimage"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
             android:layout_marginTop="25dp"
-            android:textColor="@color/action_bar" />
+            android:layout_below="@+id/partysymbol_tv"
+            android:scaleType="centerCrop" />
 
-        <!--<ImageView-->
-        <!--android:layout_width="wrap_content"-->
+        <!--<TextView-->
+        <!--android:id="@+id/partysymbol"-->
+        <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/party_imageview"-->
-        <!--android:layout_below="@+id/partysymbol_tv"-->
+        <!--android:layout_below="@+id/symbolimage"-->
+        <!--android:layout_marginTop="25dp"-->
+        <!--android:textColor="@color/action_bar" />-->
 
-        <!--/>-->
 
         <TextView
             android:id="@+id/partyabbrv_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/partysymbol"
+            android:layout_below="@+id/symbolimage"
             android:layout_marginTop="25dp"
             android:text="@string/partyabbrv_text"
             android:textColor="@color/action_bar"

@@ -48,6 +48,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
