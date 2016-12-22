@@ -73,7 +73,6 @@ public class CountDown extends AppCompatActivity {
             SecondaryDrawerItem item7 = new SecondaryDrawerItem().withIdentifier(7).withName("Get Alerts").withIcon(getResources().getDrawable(R.drawable.ic_menu_share));
             SecondaryDrawerItem item8 = new SecondaryDrawerItem().withIdentifier(8).withName("Send Invites").withIcon(getResources().getDrawable(R.drawable.ic_chat_black_24dp));
             SecondaryDrawerItem item9 = new SecondaryDrawerItem().withIdentifier(9).withName("FAQs").withIcon(getResources().getDrawable(R.drawable.ic_faq_list));
-            SecondaryDrawerItem item10 = new SecondaryDrawerItem().withIdentifier(10).withName("Maps").withIcon(getResources().getDrawable(R.drawable.ic_polling_station));
 
             // Create the AccountHeader
             AccountHeader headerResult = new AccountHeaderBuilder()
@@ -105,8 +104,7 @@ public class CountDown extends AppCompatActivity {
                             new DividerDrawerItem(),
                             item7,
                             item8,
-                            item9,
-                            item10
+                            item9
                     )
                     .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                         @Override
@@ -140,9 +138,6 @@ public class CountDown extends AppCompatActivity {
                                 }
                                 if (drawerItem.getIdentifier() == 9) {
                                     intent = new Intent(CountDown.this, FaqList.class);
-                                }
-                                if (drawerItem.getIdentifier() == 10) {
-                                    intent = new Intent(CountDown.this, PollingStations.class);
                                 }
                                 if (intent != null) {
                                     CountDown.this.startActivity(intent);
